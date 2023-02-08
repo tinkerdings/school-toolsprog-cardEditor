@@ -1,0 +1,65 @@
+* Tools programming exam
+** Information
+*** Delivery information
+- Exam must be done alone
+- The code must compile in Visual Studio
+- The documentation must be in pdf, doc or docx format.
+
+*** Exam description
+Create a card editor for card games such as Hearthstone or similar, where
+designers can punch in stats for new cards. It must be made in C# using WPF and the
+MVVM (Model View ViewModel) design pattern. Also must use MongoDB as database.
+The developement process and design decisions must be documentet aswell.
+
+*** Minimum technical requirements
+1. [ ] One input field for card "name".
+2. [ ] One dropdown menu for card "type".
+3. [ ] One extra window for creating new "types/card classes"
+   - [ ] must contain a input field for name
+   - [ ] must contain input fields for default stats
+4. [ ] When selecting a "type/card class" for a new card, it should be filled in with
+  default values
+5. [ ] Must contain at least 3 input fields for numerical stats
+   - [ ] Only allows numbers
+   - [ ] limit on mininum and maxmimum values
+6. [ ] A field that lets the user open explorer to select an image for the card
+   - [ ] Only allows image filetypes
+   - [ ] The image selected must be shown in the card editor
+7. [ ] Button that saves the card in a database when clicked
+   - [ ] All field must be cleared when button is pressed to prepare for the next card
+    to be made.
+8. [ ] A browsing window that lets the user open and look at existing cards
+  from the database
+9. [ ] Ability to delete cards from the database
+10. [ ] Ability to export cards as JSON files.
+11. [ ] Ability to import cards from JSON files.
+
+*** Extra features
+1. [ ] Ability to search for / filter out cards from the database, based on name, type/class
+   or stats
+2. [ ] In addition to showing card image in editor, also show nice card backgroun graphics
+   and stats placed on the card graphic instead of kust in input fields.
+
+*** Documentation requirements
+1. [ ] A thorough description of how the project must be set up, compiled and run.
+2. [ ] Which solutions and components where considered and ultimately chosen
+3. [ ] Particular challenges/difficulties
+4. [ ] elements you are particularily content with
+5. [ ] elements you wanted to include, but was not able to, and why.
+
+*** Technical requirements
+1. [ ] Must be programmerd in C#
+2. [ ] Must use WPF and MVVM
+3. [ ] Must use a database
+   - [ ] Must be the database MongoDB 5.0
+4. [ ] Must use a JSON-serializer (.NET 5.0 builtin or Newtonsoft Json.NET)
+
+*** Research needed
+1. [ ] Find out how to set up a .NET 5.0 WPF application
+2. [ ] Find out how to set up a basic MVVM structure for the program
+3. [ ] Find out how to install and set up Mongo DB
+4. [ ] Find out how to communicate with MongoDB from C#
+5. [ ] Find out how to communicate between the MVVM - Model, ViewModel and View
+6. [ ] Read through example exams to get a feel for how parts of the program interact
+   and communicate with MongoDB
+** Time Estimates
