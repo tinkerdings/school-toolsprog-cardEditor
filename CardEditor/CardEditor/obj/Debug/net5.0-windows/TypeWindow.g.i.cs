@@ -53,7 +53,7 @@ namespace CardEditor {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CardEditor;component/typewindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CardEditor;V1.0.0.0;component/typewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\TypeWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -9,7 +9,16 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Img\" />
     <Resource Include="Fonts\Exocet.ttf" />
+    <Resource Include="Img\stoneMid.jpg" />
+    <Resource Include="Img\stoneDark.jpg" />
+    <Resource Include="Img\smoothStone.jpg" />
+    <Resource Include="Img\smoothStoneLight.jpg" />
+    <Resource Include="Img\smoothStoneDark.jpg" />
+    <Resource Include="Img\bark.jpg" />
+    <Resource Include="Img\barkDark.jpg" />
+    <Resource Include="Img\gold.jpg" />
   </ItemGroup>
 
 </Project>

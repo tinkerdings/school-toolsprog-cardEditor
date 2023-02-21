@@ -1,17 +1,18 @@
-* Tools programming exam
-** Information
-*** Delivery information
+* *TOOLS PROGRAMMING EXAM* - CARD EDITOR
+
+** *Information*
+*** *Delivery information*
 - Exam must be done alone
 - The code must compile in Visual Studio
 - The documentation must be in pdf, doc or docx format.
 
-*** Exam description
+*** *Exam description*
 Create a card editor for card games such as Hearthstone or similar, where
 designers can punch in stats for new cards. It must be made in C# using WPF and the
 MVVM (Model View ViewModel) design pattern. Also must use MongoDB as database.
 The developement process and design decisions must be documentet aswell.
 
-*** Minimum technical requirements
+*** *Minimum feature requirements*
 1. [ ] One input field for card "name".
 2. [ ] One dropdown menu for card "type".
 3. [ ] One extra window for creating new "types/card classes"
@@ -34,32 +35,63 @@ The developement process and design decisions must be documentet aswell.
 10. [ ] Ability to export cards as JSON files.
 11. [ ] Ability to import cards from JSON files.
 
-*** Extra features
+*** *Extra features*
 1. [ ] Ability to search for / filter out cards from the database, based on name, type/class
    or stats
 2. [ ] In addition to showing card image in editor, also show nice card backgroun graphics
-   and stats placed on the card graphic instead of kust in input fields.
+   and stats placed on the card graphic instead of just in input fields.
 
-*** Documentation requirements
+*** *Documentation requirements*
 1. [ ] A thorough description of how the project must be set up, compiled and run.
 2. [ ] Which solutions and components where considered and ultimately chosen
 3. [ ] Particular challenges/difficulties
 4. [ ] elements you are particularily content with
 5. [ ] elements you wanted to include, but was not able to, and why.
 
-*** Technical requirements
-1. [ ] Must be programmerd in C#
+*** *Technical requirements*
+1. [ ] Must be programmed in C#
 2. [ ] Must use WPF and MVVM
 3. [ ] Must use a database
    - [ ] Must be the database MongoDB 5.0
 4. [ ] Must use a JSON-serializer (.NET 5.0 builtin or Newtonsoft Json.NET)
 
-*** Research needed
-1. [ ] Find out how to set up a .NET 5.0 WPF application
-2. [ ] Find out how to set up a basic MVVM structure for the program
-3. [ ] Find out how to install and set up Mongo DB
-4. [ ] Find out how to communicate with MongoDB from C#
-5. [ ] Find out how to communicate between the MVVM - Model, ViewModel and View
+*** *Research needed*
+1. [X] Find out how to set up a .NET 5.0 WPF application
+2. [X] Find out how to set up a basic MVVM structure for the program
+3. [X] Find out how to install and set up Mongo DB
+4. [X] Find out how to communicate with MongoDB from C#
+5. [X] Find out how to communicate between the MVVM - Model, ViewModel and View
 6. [ ] Read through example exams to get a feel for how parts of the program interact
    and communicate with MongoDB
 ** Time Estimates
+*** *Overarching goals*
+| *GOAL*                                          | *ESTIMATED TIME* | *TIME SPENT* | *TIME DEVIATION* |
+|-----------------------------------------------+----------------+------------+----------------|
+| Get basic project setup with .NET 5.0 and WPF | /4-5h/           |            |                |
+|-----------------------------------------------+----------------+------------+----------------|
+| Set up MongoDB                                | /3-5h/           |            |                |
+|-----------------------------------------------+----------------+------------+----------------|
+| Set up basic MVVM structure                   | /5-6h/           |            |                |
+|-----------------------------------------------+----------------+------------+----------------|
+| Set up database communication in project      | /5-8h/           |            |                |
+|-----------------------------------------------+----------------+------------+----------------|
+| Write Model parts of MVVM                     | /4-5h/           |            |                |
+|-----------------------------------------------+----------------+------------+----------------|
+| Write ViewModel parts of MVVM                 | /4-5h/           |            |                |
+|-----------------------------------------------+----------------+------------+----------------|
+| Write View parts of MVVM                      | /4-5h/           |            |                |
+|-----------------------------------------------+----------------+------------+----------------|
+| Write input logic                             | 1-2d           |            |                |
+|-----------------------------------------------+----------------+------------+----------------|
+| Implement image loading                       | 5-6h           |            |                |
+|-----------------------------------------------+----------------+------------+----------------|
+| Write export/import code                      | 1d             |            |                |
+|-----------------------------------------------+----------------+------------+----------------|
+| Create window logic for type creation window  | 1d             |            |                |
+|-----------------------------------------------+----------------+------------+----------------|
+| Write database browsing code                  | 1-2d           |            |                |
+|-----------------------------------------------+----------------+------------+----------------|
+| Write documentation                           | a bit a day    |            |                |
+|-----------------------------------------------+----------------+------------+----------------|
+| *TOTAL TIME*                                    | ~ 8d-11d       |            |                |
+|-----------------------------------------------+----------------+------------+----------------|

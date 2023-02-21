@@ -7,7 +7,9 @@
         xmlns:views="clr-namespace:CardEditor.Views" 
         xmlns:viewmodels="clr-namespace:CardEditor.ViewModels" 
         mc:Ignorable="d"
-        Title="Diablo Card Editor" Height="900" Width="1200"
+        Title="Diablo Card Editor"
+        MinHeight="945" 
+        MinWidth="1200"
         FontFamily="{StaticResource Exocet}">
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewmodels:EditViewModel}">
@@ -17,7 +19,8 @@
             <views:BrowseView />
         </DataTemplate>
     </Window.Resources>
-    <Grid>
+    <Grid
+        Style="{StaticResource StyleBackgroundPrimary}">
         <views:MainView/>
     </Grid>
 </Window>

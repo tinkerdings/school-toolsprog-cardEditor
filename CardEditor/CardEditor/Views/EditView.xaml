@@ -6,146 +6,350 @@
              xmlns:local="clr-namespace:CardEditor.Views" xmlns:viewmodels="clr-namespace:CardEditor.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:EditViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+    <Border
+        Style="{StaticResource StyleBorderView}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
 
-        <!--BEGIN card header-->
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-
-            <!--BEGIN card header values-->
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <!--BEGIN card header name field-->
-                <Border
-                    Grid.Row="0"
-                    Background="#7e2e12">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock 
-                            Grid.Column="0"
-                            Text="NAME:"
-                            FontSize="20"
-                            Foreground="white"
-                            Padding="10 5"
-                            Background="#7e2e12"
-                            TextAlignment="Center"
-                            VerticalAlignment="Center"/>
-                        <TextBox
-                            Grid.Column="1"
-                            Text="Fallen Shaman"
-                            FontSize="18"
-                            TextAlignment="Right"
-                            VerticalAlignment="Center"
-                            Padding="5"
-                            Margin="10"/>
-                    </Grid>
-                </Border>
-                <!--END card header name field-->
-
-                <!--BEGIN card header type field-->
-                <Border
-                    Grid.Row="1"
-                    Background="#7e2e12">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-
-                        <ComboBox
-                            Grid.Column="0"
-                            Text="NECROMANCER:"
-                            FontSize="18"
-                            Foreground="Black"
-                            Padding="10 5"
-                            Background="#7e2e12"
-                            ItemsSource="{Binding CardTypes}"
-                            SelectedValue="{Binding SelectedCardType}"
-                            Margin="5"/>
-                        <Button
-                            Grid.Column="1"
-                            Style="{StaticResource StyleButtonPrimary}"
-                            FontSize="34"
-                            MinHeight="50"
-                            MinWidth="50"
-                            MaxHeight="50"
-                            MaxWidth="50"
-                            FontWeight="UltraBlack">
-                            <Button.Content>
-                                <TextBlock
-                                    Text="+"
-                                    VerticalAlignment="Center"
-                                    TextAlignment="Center"
-                                    FontFamily="Verdana"
-                                    HorizontalAlignment="Center"
-                                    />
-                            </Button.Content>
-                        </Button>
-                            
-                    </Grid>
-                </Border>
-                <!--END card header type field-->
-            </Grid>
-            <!--END card header values-->
-
-            <!--BEGIN card image field-->
-            <Border 
-                Grid.Column="1"
-                Background="#7e2e12"
-                BorderBrush="Black"
-                BorderThickness="4">
-                <Button
-                    Command="{Binding UploadImageCommand}">
-                    <Image 
-                        Margin="4"
-                        Source="{Binding SelectedCardImage}"
-                        MinWidth="120"
-                        MaxWidth="120"
-                        MinHeight="120"
-                        MaxHeight="120"/>
-                </Button>
-            </Border>
-            <!--END Card image field-->
-
-        </Grid>
-        <!--END card header-->
-
-        <!--BEGIN stats header-->
-
-        <Border Grid.Row="1"
-            Style="{StaticResource StyleBorderTitlePrimary}">
-            <Grid>
+            <!--BEGIN card header-->
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock 
-                    Style="{StaticResource StyleTextTitlePrimary}"
-                    Text="STATS" />
-            </Grid>
-        </Border>
-        <!--END stats header-->
 
-    </Grid>
+                <!--BEGIN card header values-->
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--BEGIN card header name field-->
+                    <Border
+                        Grid.Row="0"
+                        Style="{StaticResource StyleBorderTitlePrimary}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                Grid.Column="0"
+                                Style="{StaticResource StyleTextTitlePrimary}"
+                                FontSize="20"
+                                Text="NAME"/>
+                            <Button
+                                Grid.Column="1"
+                                Style="{StaticResource StyleButtonPrimary}"
+                                MinWidth="100">
+                                <Button.Content>
+                                    <TextBlock
+                                        FontSize="11"
+                                        Text="RANDOMIZE"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        />
+                                </Button.Content>
+                            </Button>
+                        </Grid>
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Style="{StaticResource StyleBorderItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox
+                                Grid.Column="1"
+                                Text="Fallen Shaman"
+                                Style="{StaticResource StyleTextBoxItem}"/>
+                        </Grid>
+                    </Border>
+                    <!--END card header name field-->
+
+                    <!--BEGIN card header type field-->
+                    <Border
+                        Grid.Row="2"
+                        Style="{StaticResource StyleBorderTitlePrimary}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                Grid.Column="0"
+                                Style="{StaticResource StyleTextTitlePrimary}"
+                                FontSize="20"
+                                Text="TYPE"/>
+                            <Button
+                                Grid.Column="1"
+                                MinWidth="100"
+                                Style="{StaticResource StyleButtonPrimary}">
+                                <Button.Content>
+                                    <TextBlock
+                                        FontSize="11"
+                                        Text="NEW TYPE"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        />
+                                </Button.Content>
+                            </Button>
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Grid.Row="3"
+                        Style="{StaticResource StyleBorderItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border
+                                Style="{StaticResource StyleBorderComboBox}">
+                                <ComboBox
+                                    Style="{StaticResource StyleComboBox}"
+                                    Grid.Column="0"
+                                    ItemsSource="{Binding CardTypes}"
+                                    SelectedValue="{Binding SelectedCardType}"/>
+                            </Border>
+                                
+                        </Grid>
+                    </Border>
+                    <!--END card header type field-->
+                </Grid>
+                <!--END card header values-->
+
+                <!--BEGIN card image field-->
+                <Border 
+                    Style="{StaticResource StyleBorderCardImage}"
+                    Grid.Column="1">
+                    <Button
+                        Background="#000"
+                        Command="{Binding UploadImageCommand}">
+                        <Image 
+                            MinWidth="180"
+                            MaxWidth="180"
+                            MinHeight="190"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Stretch="UniformToFill"
+                            Source="{Binding SelectedCardImage}" />
+                    </Button>
+                </Border>
+                <!--END Card image field-->
+
+            </Grid>
+            <!--END card header-->
+
+            <!--BEGIN stats header-->
+            <Border Grid.Row="1"
+                Style="{StaticResource StyleBorderTitlePrimary}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock 
+                        Grid.Column="0"
+                        Style="{StaticResource StyleTextTitlePrimary}"
+                        Text="STATS" />
+                    <Button
+                        Grid.Column="1"
+                        Style="{StaticResource StyleButtonPrimary}"
+                        Content="RESET"
+                        FontSize="14"/>
+                </Grid>
+            </Border>
+            <!--END stats header-->
+
+            <!--BEGIN Stats-->
+            <Border 
+                Grid.Row="2"
+                Style="{StaticResource StyleBorderItem}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Grid.Column="0"
+                        Style="{StaticResource StyleTextStatItem}"
+                        Foreground="#FAB616"
+                        Text="LEVEL:"/>
+                    <TextBox
+                        Grid.Column="1"
+                        Style="{StaticResource StyleTextBoxItem}" />
+                </Grid>
+            </Border>
+            <Border 
+                Grid.Row="3"
+                Style="{StaticResource StyleBorderItem}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Grid.Column="0"
+                        Style="{StaticResource StyleTextStatItem}"
+                        Foreground="#D87DFF"
+                        Text="STRENGTH:"/>
+                    <TextBox
+                        Grid.Column="1"
+                        Style="{StaticResource StyleTextBoxItem}"/>
+                </Grid>
+            </Border>
+            <Border 
+                Grid.Row="4"
+                Style="{StaticResource StyleBorderItem}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Grid.Column="0"
+                        Style="{StaticResource StyleTextStatItem}"
+                        Foreground="#96F505"
+                        Text="DEXTERITY:"/>
+                    <TextBox
+                        Grid.Column="1"
+                        Style="{StaticResource StyleTextBoxItem}"/>
+                </Grid>
+            </Border>
+            <Border 
+                Grid.Row="5"
+                Style="{StaticResource StyleBorderItem}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Grid.Column="0"
+                        Style="{StaticResource StyleTextStatItem}"
+                        Foreground="#F33464"
+                        Text="VITALITY:"/>
+                    <TextBox
+                        Grid.Column="1"
+                        Style="{StaticResource StyleTextBoxItem}"/>
+                </Grid>
+            </Border>
+            <Border 
+                Grid.Row="6"
+                Style="{StaticResource StyleBorderItem}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Grid.Column="0"
+                        Style="{StaticResource StyleTextStatItem}"
+                        Foreground="#7D8DFF"
+                        Text="ENERGY:"/>
+                    <TextBox
+                        Grid.Column="1"
+                        Style="{StaticResource StyleTextBoxItem}"/>
+                </Grid>
+            </Border>
+            <!--END Stats-->
+
+            <!--BEGIN MENU-->
+            <Border
+                Grid.Row="7"
+                Style="{StaticResource StyleBorderTitlePrimary}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.ColumnSpan="4"
+                        Style="{StaticResource StyleTextTitlePrimary}"
+                        FontSize="20"
+                        Margin="0 0 0 5"
+                        Text="MENU"/>
+                    <Button 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="4"
+                        Style="{StaticResource StyleButtonPrimary}"
+                        MinWidth="90"
+                        Command="{Binding ShowCardCommand}"
+                        Content="SHOW THIS CARD"/>
+                    <Button 
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Style="{StaticResource StyleButtonPrimary}"
+                        MinWidth="90"
+                        Command="{Binding ImportCardCommand}"
+                        Content="IMPORT"/>
+                    <Button 
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Style="{StaticResource StyleButtonPrimary}"
+                        MinWidth="90"
+                        Command="{Binding ExportCardCommand}"
+                        Content="EXPORT"/>
+                    <Button 
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Style="{StaticResource StyleButtonPrimary}"
+                        MinWidth="90"
+                        Command="{Binding DeleteCardCommand}"
+                        Content="DELETE"/>
+                    <Button 
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Style="{StaticResource StyleButtonPrimary}"
+                        MinWidth="90"
+                        Command="{Binding SaveCardCommand}"
+                        Content="SAVE"/>
+                </Grid>
+            </Border>
+            <!--END MENU-->
+
+        </Grid>
+    </Border>
 </UserControl>

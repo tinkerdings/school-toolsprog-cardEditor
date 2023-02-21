@@ -6,15 +6,90 @@
         <ResourceDictionary>
 
             <FontFamily x:Key="Exocet">pack://application:,,,/Fonts/#Exocet</FontFamily>
+            <ImageSource x:Key="StoneBackground">pack://application:,,,/Img/stone.jpg</ImageSource>
+            <ImageSource x:Key="StoneBackgroundMid">pack://application:,,,/Img/stoneMid.jpg</ImageSource>
+            <ImageSource x:Key="StoneBackgroundDark">pack://application:,,,/Img/stoneDark.jpg</ImageSource>
+            <ImageSource x:Key="SmoothStoneBackground">pack://application:,,,/Img/smoothStone.jpg</ImageSource>
+            <ImageSource x:Key="SmoothStoneBackgroundLight">pack://application:,,,/Img/smoothStoneLight.jpg</ImageSource>
+            <ImageSource x:Key="SmoothStoneBackgroundDark">pack://application:,,,/Img/smoothStoneDark.jpg</ImageSource>
+            <ImageSource x:Key="BarkBackground">pack://application:,,,/Img/bark.jpg</ImageSource>
+            <ImageSource x:Key="BarkBackgroundDark">pack://application:,,,/Img/barkDark.jpg</ImageSource>
+            <ImageSource x:Key="GoldBackground">pack://application:,,,/Img/gold.jpg</ImageSource>
+
+            <Style x:Key="StyleBackgroundPrimary" TargetType="Grid">
+                <Style.Resources>
+                    <ImageBrush 
+                        x:Key="bgTexture"
+                        ImageSource="{StaticResource StoneBackgroundDark}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,1200,1200"/>
+                </Style.Resources>
+                <Setter Property="Background" Value="{StaticResource bgTexture}"/>
+            </Style>
 
             <Style x:Key="StyleBorderTitlePrimary" TargetType="Border">
-                <Setter Property="Background" Value="#333"/>
-                <Setter Property="BorderBrush" Value="#000"/>
-                <Setter Property="BorderThickness" Value="2"/>
+                <Style.Resources>
+                    <ImageBrush 
+                        x:Key="bgTexture"
+                        ImageSource="{StaticResource SmoothStoneBackground}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,800,800"/>
+                    <ImageBrush 
+                        x:Key="borderTexture"
+                        ImageSource="{StaticResource GoldBackground}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,200,200"/>
+                </Style.Resources>
+                <Setter Property="Background" Value="{StaticResource bgTexture}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource borderTexture}"/>
+                <Setter Property="BorderThickness" Value="3"/>
+                <Setter Property="Padding" Value="5"/>
+            </Style>
+
+            <Style x:Key="StyleBorderCardImage" TargetType="Border">
+                <Style.Resources>
+                    <ImageBrush 
+                        x:Key="borderTexture"
+                        ImageSource="{StaticResource GoldBackground}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,200,200"/>
+                </Style.Resources>
+                <Setter Property="Background" Value="#000"/>
+                <Setter Property="BorderBrush" Value="{StaticResource borderTexture}"/>
+                <Setter Property="BorderThickness" Value="5"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value ="Center"/>
+            </Style>
+
+            <Style x:Key="StyleBorderView" TargetType="Border">
+                <Style.Resources>
+                    <ImageBrush 
+                        x:Key="bgTexture"
+                        ImageSource="{StaticResource SmoothStoneBackgroundDark}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,800,800"/>
+                    <ImageBrush 
+                        x:Key="borderTexture"
+                        ImageSource="{StaticResource SmoothStoneBackgroundLight}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,200,200"/>
+                </Style.Resources>
+                <Setter Property="Background" Value="{StaticResource bgTexture}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource borderTexture}"/>
+                <Setter Property="BorderThickness" Value="4"/>
+                <Setter Property="Padding" Value="5"/>
             </Style>
 
             <Style x:Key="StyleTextTitlePrimary" TargetType="TextBlock">
                 <Setter Property="Foreground" Value="#F33"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
                 <Setter Property="TextAlignment" Value="Center"/>
                 <Setter Property="FontSize" Value="34"/>
@@ -27,15 +102,137 @@
                 <Setter Property="FontSize" Value="34"/>
             </Style>
 
+            <Style x:Key="StyleBorderItem" TargetType="Border">
+                <Style.Resources>
+                    <ImageBrush 
+                        x:Key="bgTexture"
+                        ImageSource="{StaticResource BarkBackgroundDark}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,800,600"/>
+                    <ImageBrush 
+                        x:Key="borderTexture"
+                        ImageSource="{StaticResource SmoothStoneBackgroundLight}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,200,200"/>
+                </Style.Resources>
+                <Setter Property="Background" Value="{StaticResource bgTexture}"/>
+                <Setter Property="BorderBrush" Value="#000"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="BorderBrush" Value="{StaticResource borderTexture}"/>
+                <Setter Property="BorderThickness" Value="3"/>
+                <Setter Property="Margin" Value="0 0 0 4"/>
+            </Style>
+
+            <Style x:Key="StyleTextStatItem" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="Padding" Value="15 10"/>
+            </Style>
+
+            <Style x:Key="StyleBorderComboBox" TargetType="Border">
+                <Style.Resources>
+                    <ImageBrush 
+                        x:Key="bgTexture"
+                        ImageSource="{StaticResource StoneBackgroundDark}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,800,600"/>
+                    <ImageBrush 
+                        x:Key="borderTexture"
+                        ImageSource="{StaticResource SmoothStoneBackgroundLight}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,200,200"/>
+                </Style.Resources>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="MinWidth" Value="200"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="BorderBrush" Value="{StaticResource borderTexture}"/>
+                <Setter Property="BorderThickness" Value="4"/>
+                <Setter Property="Background" Value="{StaticResource bgTexture}"/>
+            </Style>
+
+            <Style x:Key="StyleTextBoxItem" TargetType="TextBox">
+                <Style.Resources>
+                    <ImageBrush 
+                        x:Key="bgTexture"
+                        ImageSource="{StaticResource StoneBackgroundDark}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,800,600"/>
+                    <ImageBrush 
+                        x:Key="borderTexture"
+                        ImageSource="{StaticResource SmoothStoneBackgroundLight}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,200,200"/>
+                    <ImageBrush 
+                        x:Key="textTexture"
+                        ImageSource="{StaticResource GoldBackground}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute"
+                        Viewport="0,0,10,40"/>
+                </Style.Resources>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="TextAlignment" Value="Right"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="MinWidth" Value="200"/>
+                <Setter Property="BorderBrush" Value="{StaticResource borderTexture}"/>
+                <Setter Property="BorderThickness" Value="4"/>
+                <Setter Property="Background" Value="{StaticResource bgTexture}"/>
+                <Setter Property="Foreground" Value="{StaticResource textTexture}"/>
+            </Style>
+
+            <Style x:Key="StyleComboBox" TargetType="ComboBox">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Padding" Value="5"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="MinWidth" Value="200"/>
+            </Style>
+
             <Style x:Key="StyleButtonPrimary" TargetType="Button">
+                <Style.Resources>
+                    <ImageBrush 
+                        x:Key="borderTexture"
+                        ImageSource="{StaticResource SmoothStoneBackgroundLight}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,400 400"/>
+                </Style.Resources>
                 <Setter Property="Background" Value="#5d1713"/>
                 <Setter Property="Foreground" Value="#e65b00"/>
+                <Setter Property="BorderBrush" Value="{StaticResource borderTexture}"/>
+                <Setter Property="BorderThickness" Value="4"/>
                 <Setter Property="Padding" Value="10"/>
                 <Setter Property="Margin" Value="2"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
                 <Setter Property="VerticalAlignment" Value="Center"/>
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="StyleListView" TargetType="ListView">
+                <Style.Resources>
+                    <ImageBrush 
+                        x:Key="bgTexture"
+                        ImageSource="{StaticResource StoneBackgroundDark}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,800,600"/>
+                    <ImageBrush 
+                        x:Key="borderTexture"
+                        ImageSource="{StaticResource SmoothStoneBackgroundLight}" 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        Viewport="0,0,400 400"/>
+                </Style.Resources>
+                <Setter Property="Background" Value="{StaticResource bgTexture}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource borderTexture}"/>
+                <Setter Property="BorderThickness" Value="3"/>
+                <Setter Property="Margin" Value="10"/>
             </Style>
 
         </ResourceDictionary>
