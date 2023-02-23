@@ -184,6 +184,7 @@
                 <Setter Property="BorderThickness" Value="4"/>
                 <Setter Property="Background" Value="{StaticResource bgTexture}"/>
                 <Setter Property="Foreground" Value="{StaticResource textTexture}"/>
+                <Setter Property="CaretBrush" Value="{StaticResource textTexture}"/>
             </Style>
 
             <Style x:Key="StyleComboBox" TargetType="ComboBox">

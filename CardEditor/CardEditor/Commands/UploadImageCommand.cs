@@ -12,11 +12,11 @@ namespace CardEditor.Commands
 {
     public class UploadImageCommand : CommandBase
     {
-        private readonly EditViewModel _editViewModel;
+        private readonly CardViewModel Card;
 
-        public UploadImageCommand(EditViewModel editViewModel)
+        public UploadImageCommand(CardViewModel card)
         {
-            _editViewModel = editViewModel;
+            Card = card;
         }
         public override void Execute(object parameter)
         {
@@ -35,7 +35,7 @@ namespace CardEditor.Commands
 
             if(fileDialog.ShowDialog() == true)
             {
-                _editViewModel.SelectedCardImage = fileDialog.FileName;
+                Card.Image = fileDialog.FileName;
             }
         }
     }

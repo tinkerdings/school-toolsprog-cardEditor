@@ -1,4 +1,5 @@
 ﻿using CardEditor.Commands;
+using CardEditor.Models;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -8,27 +9,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Text.RegularExpressions;
 
 namespace CardEditor.ViewModels
 {
     public class EditViewModel : ViewModelBase
     {
-        private string _selectedCardImage;
+        public CardViewModel CurrentCard { get; }
         public ICommand UploadImageCommand { get; }
 
         public EditViewModel()
         { 
-           UploadImageCommand = new UploadImageCommand(this);
+            CurrentCard = new CardViewModel();
+            UploadImageCommand = new UploadImageCommand(CurrentCard);
         }
 
-        public string SelectedCardImage
+        public void ValidateInputLevel(object sender, TextCompositionEventArgs e)
         {
-            get => _selectedCardImage;
-            set
-            {
-                _selectedCardImage = value;
-                OnPropertyChanged(nameof(SelectedCardImage));
-            }
+            Regex regex = new Regex("[^0-9]+");
+            int len = e.Text.Length;
+            e.Handled = regex.IsMatch(e.Text) && len < 3;
         }
     }
 }

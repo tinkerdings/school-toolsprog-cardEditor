@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CardEditor.Views" xmlns:viewmodels="clr-namespace:CardEditor.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:EditViewModel}"
+             xmlns:local="clr-namespace:CardEditor.Views" xmlns:viewmodels="clr-namespace:CardEditor.ViewModels" xmlns:utils="clr-namespace:CardEditor.Utils" d:DataContext="{d:DesignInstance Type=viewmodels:EditViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Border
@@ -54,6 +54,7 @@
                             <Button
                                 Grid.Column="1"
                                 Style="{StaticResource StyleButtonPrimary}"
+                                Command="{Binding RandomizeCardName}"
                                 MinWidth="100">
                                 <Button.Content>
                                     <TextBlock
@@ -78,7 +79,7 @@
 
                             <TextBox
                                 Grid.Column="1"
-                                Text="Fallen Shaman"
+                                Text="{Binding CurrentCard.Name, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource StyleTextBoxItem}"/>
                         </Grid>
                     </Border>
@@ -131,7 +132,7 @@
                                     Style="{StaticResource StyleComboBox}"
                                     Grid.Column="0"
                                     ItemsSource="{Binding CardTypes}"
-                                    SelectedValue="{Binding SelectedCardType}"/>
+                                    SelectedValue="{Binding CurrentCard.Type, UpdateSourceTrigger=PropertyChanged}"/>
                             </Border>
                                 
                         </Grid>
@@ -154,7 +155,7 @@
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
                             Stretch="UniformToFill"
-                            Source="{Binding SelectedCardImage}" />
+                            Source="{Binding CurrentCard.Image, UpdateSourceTrigger=PropertyChanged}" />
                     </Button>
                 </Border>
                 <!--END Card image field-->
@@ -169,6 +170,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock 
                         Grid.Column="0"
@@ -177,7 +179,14 @@
                     <Button
                         Grid.Column="1"
                         Style="{StaticResource StyleButtonPrimary}"
+                        Content="RANDOMIZE"
+                        Command="{Binding RandomizeStatsCommand}"
+                        FontSize="14"/>
+                    <Button
+                        Grid.Column="2"
+                        Style="{StaticResource StyleButtonPrimary}"
                         Content="RESET"
+                        Command="{Binding ResetStatsCommand}"
                         FontSize="14"/>
                 </Grid>
             </Border>
@@ -199,9 +208,11 @@
                         Style="{StaticResource StyleTextStatItem}"
                         Foreground="#FAB616"
                         Text="LEVEL:"/>
-                    <TextBox
+                    <utils:ValidationTextBox
                         Grid.Column="1"
-                        Style="{StaticResource StyleTextBoxItem}" />
+                        Style="{StaticResource StyleTextBoxItem}" 
+                        Text="{Binding CurrentCard.Level, ValidatesOnDataErrors=True,
+                        UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, TargetNullValue=''}"/>
                 </Grid>
             </Border>
             <Border 
@@ -219,9 +230,11 @@
                         Style="{StaticResource StyleTextStatItem}"
                         Foreground="#D87DFF"
                         Text="STRENGTH:"/>
-                    <TextBox
+                    <utils:ValidationTextBox
                         Grid.Column="1"
-                        Style="{StaticResource StyleTextBoxItem}"/>
+                        Style="{StaticResource StyleTextBoxItem}"
+                        Text="{Binding CurrentCard.Strength,
+                        UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, TargetNullValue=''}"/>
                 </Grid>
             </Border>
             <Border 
@@ -239,9 +252,11 @@
                         Style="{StaticResource StyleTextStatItem}"
                         Foreground="#96F505"
                         Text="DEXTERITY:"/>
-                    <TextBox
+                    <utils:ValidationTextBox
                         Grid.Column="1"
-                        Style="{StaticResource StyleTextBoxItem}"/>
+                        Style="{StaticResource StyleTextBoxItem}"
+                        Text="{Binding CurrentCard.Dexterity,
+                        UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, TargetNullValue=''}"/>
                 </Grid>
             </Border>
             <Border 
@@ -259,9 +274,11 @@
                         Style="{StaticResource StyleTextStatItem}"
                         Foreground="#F33464"
                         Text="VITALITY:"/>
-                    <TextBox
+                    <utils:ValidationTextBox
                         Grid.Column="1"
-                        Style="{StaticResource StyleTextBoxItem}"/>
+                        Style="{StaticResource StyleTextBoxItem}"
+                        Text="{Binding CurrentCard.Vitality,
+                        UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, TargetNullValue=''}"/>
                 </Grid>
             </Border>
             <Border 
@@ -279,9 +296,11 @@
                         Style="{StaticResource StyleTextStatItem}"
                         Foreground="#7D8DFF"
                         Text="ENERGY:"/>
-                    <TextBox
+                    <utils:ValidationTextBox
                         Grid.Column="1"
-                        Style="{StaticResource StyleTextBoxItem}"/>
+                        Style="{StaticResource StyleTextBoxItem}"
+                        Text="{Binding CurrentCard.Energy,
+                        UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, TargetNullValue=''}"/>
                 </Grid>
             </Border>
             <!--END Stats-->
