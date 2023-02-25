@@ -25,12 +25,16 @@ namespace CardEditor.Utils
 
         private void PreviewNumberInput(TextCompositionEventArgs e)
         {
+            if(e.Text.Contains(' '))
+            {
+                e.Handled = true;
+            }
             e.Handled = !ValidNumberInput(e.Text);
         }
 
         private bool ValidNumberInput(string input)
         {
-            Regex regex = new Regex("[0-9]+");
+            Regex regex = new Regex("^[0-9]+");
             return regex.IsMatch(input);
         }
 

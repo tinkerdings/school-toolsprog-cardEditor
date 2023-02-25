@@ -20,15 +20,15 @@ C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\CardEditor.pdb
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\CardEditor.genruntimeconfig.cache
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\ref\CardEditor.dll
-C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\TypeWindow.g.cs
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\Views\BrowseView.g.cs
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\Views\EditView.g.cs
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\Views\MainView.g.cs
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\Views\TypeView.g.cs
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\TypeWindow.baml
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\Views\BrowseView.baml
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\Views\EditView.baml
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\Views\MainView.baml
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\Views\TypeView.baml
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\App.baml
+C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\TypeModal.g.cs
+C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\TypeModal.baml

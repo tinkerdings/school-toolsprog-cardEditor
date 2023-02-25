@@ -21,10 +21,8 @@ namespace CardEditor
     /// </summary>
     public partial class MainWindow : Window
     {
-        MainViewModel MainViewModel { get; }
         public MainWindow()
         {
-            MainViewModel = new MainViewModel();
             InitializeComponent();
         }
     }

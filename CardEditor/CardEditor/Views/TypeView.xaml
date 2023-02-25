@@ -3,10 +3,278 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CardEditor.Views"
+             xmlns:local="clr-namespace:CardEditor.Views" xmlns:utils="clr-namespace:CardEditor.Utils"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <Border
+        Style="{StaticResource StyleBorderWindow}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Border 
+                Grid.Row="0"
+                Style="{StaticResource StyleBorderTitlePrimary}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        Style="{StaticResource StyleTextTitleSecondary}"
+                        Text="NEW CARD TYPE"/>
+                    <Button
+                        Grid.Column="1"
+                        Style="{StaticResource StyleButtonPrimary}"
+                        FontSize="20"
+                        MinWidth="50"
+                        MinHeight="50"
+                        FontWeight="Black"
+                        Content="X"
+                        Command="{Binding CloseTypeModalCommand}"/>
+                </Grid>
+            </Border>
+
+            <Border
+                Margin="10"
+                Grid.Row="1"
+                Style="{StaticResource StyleBorderView}">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--BEGIN card header name field-->
+                    <Border
+                        Grid.Row="0"
+                        Style="{StaticResource StyleBorderTitlePrimary}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                Grid.Column="0"
+                                Style="{StaticResource StyleTextTitlePrimary}"
+                                Text="TYPE NAME"/>
+                            <Button
+                                Grid.Column="1"
+                                Style="{StaticResource StyleButtonPrimary}"
+                                Command="{Binding RandomizeCardNameCommand}"
+                                MinWidth="100">
+                                <Button.Content>
+                                    <TextBlock
+                                        FontSize="12"
+                                        Text="RANDOMIZE"
+                                        VerticalAlignment="Center"
+                                        TextAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        />
+                                </Button.Content>
+                            </Button>
+                        </Grid>
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Style="{StaticResource StyleBorderItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBox
+                                Grid.Column="1"
+                                Text="{Binding CurrentCard.Name, UpdateSourceTrigger=PropertyChanged}"
+                                Style="{StaticResource StyleTextBoxItem}"/>
+                        </Grid>
+                    </Border>
+                    <!--END card header name field-->
+                    <!--BEGIN stats header-->
+                    <Border Grid.Row="2"
+                        Style="{StaticResource StyleBorderTitlePrimary}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock 
+                                Grid.Column="0"
+                                Style="{StaticResource StyleTextTitlePrimary}"
+                                Text="DEFAULT STATS" />
+                            <Button
+                                Grid.Column="1"
+                                Style="{StaticResource StyleButtonPrimary}"
+                                Content="RANDOMIZE"
+                                Command="{Binding RandomizeStatsCommand}"
+                                FontSize="12"/>
+                        </Grid>
+                    </Border>
+                    <!--END stats header-->
+                    <!--BEGIN Stats-->
+                    <Border 
+                        Grid.Row="3"
+                        Style="{StaticResource StyleBorderItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Grid.Column="0"
+                                Style="{StaticResource StyleTextStatItem}"
+                                Foreground="#FAB616"
+                                Text="LEVEL:"/>
+                            <utils:ValidationTextBox
+                                Grid.Column="1"
+                                Style="{StaticResource StyleTextBoxItem}" 
+                                Text="{Binding CurrentCard.Level, ValidatesOnDataErrors=True,
+                                UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, TargetNullValue=''}"/>
+                        </Grid>
+                    </Border>
+                    <Border 
+                        Grid.Row="4"
+                        Style="{StaticResource StyleBorderItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Grid.Column="0"
+                                Style="{StaticResource StyleTextStatItem}"
+                                Foreground="#D87DFF"
+                                Text="STRENGTH:"/>
+                            <utils:ValidationTextBox
+                                Grid.Column="1"
+                                Style="{StaticResource StyleTextBoxItem}"
+                                Text="{Binding CurrentCard.Strength,
+                                UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, TargetNullValue=''}"/>
+                        </Grid>
+                    </Border>
+                    <Border 
+                        Grid.Row="5"
+                        Style="{StaticResource StyleBorderItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Grid.Column="0"
+                                Style="{StaticResource StyleTextStatItem}"
+                                Foreground="#96F505"
+                                Text="DEXTERITY:"/>
+                            <utils:ValidationTextBox
+                                Grid.Column="1"
+                                Style="{StaticResource StyleTextBoxItem}"
+                                Text="{Binding CurrentCard.Dexterity,
+                                UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, TargetNullValue=''}"/>
+                        </Grid>
+                    </Border>
+                    <Border 
+                        Grid.Row="6"
+                        Style="{StaticResource StyleBorderItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Grid.Column="0"
+                                Style="{StaticResource StyleTextStatItem}"
+                                Foreground="#F33464"
+                                Text="VITALITY:"/>
+                            <utils:ValidationTextBox
+                                Grid.Column="1"
+                                Style="{StaticResource StyleTextBoxItem}"
+                                Text="{Binding CurrentCard.Vitality,
+                                UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, TargetNullValue=''}"/>
+                        </Grid>
+                    </Border>
+                    <Border 
+                        Grid.Row="7"
+                        Style="{StaticResource StyleBorderItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Grid.Column="0"
+                                Style="{StaticResource StyleTextStatItem}"
+                                Foreground="#7D8DFF"
+                                Text="ENERGY:"/>
+                            <utils:ValidationTextBox
+                                Grid.Column="1"
+                                Style="{StaticResource StyleTextBoxItem}"
+                                Text="{Binding CurrentCard.Energy,
+                                UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, TargetNullValue=''}"/>
+                        </Grid>
+                    </Border>
+                    <!--END Stats-->
+                    <!--BEGIN MENU-->
+                    <Border
+                        Grid.Row="8"
+                        Style="{StaticResource StyleBorderTitlePrimary}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button 
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Style="{StaticResource StyleButtonPrimary}"
+                                FontSize="18"
+                                MinWidth="170"
+                                Command="{Binding ShowCardCommand}"
+                                IsEnabled="{Binding CurrentCard.IsValidCard}"
+                                Content="CREATE"/>
+                            <Button 
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Style="{StaticResource StyleButtonPrimary}"
+                                FontSize="18"
+                                MinWidth="179"
+                                Command="{Binding ImportCardCommand}"
+                                Content="RESET"/>
+                        </Grid>
+                    </Border>
+                    <!--END MENU-->
+                    
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
 </UserControl>

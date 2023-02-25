@@ -14,15 +14,12 @@ namespace CardEditor
     /// </summary>
     public partial class App : Application
     {
-        public TypeWindow TypeWindow { get; private set; }
-
+        public MainWindow MainWindow { get; set; }
+        public ViewModelLocator ViewModelLocator { get; set; }
         protected override void OnStartup(StartupEventArgs e)
         {
             MainWindow = new MainWindow();
             MainWindow.Show();
-
-            //TypeWindow = new TypeWindow();
-            //TypeWindow.Show();
 
             base.OnStartup(e);
         }

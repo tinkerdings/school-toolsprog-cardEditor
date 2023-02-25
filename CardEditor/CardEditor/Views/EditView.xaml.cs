@@ -26,7 +26,6 @@ namespace CardEditor.Views
         public EditView()
         {
             InitializeComponent();
-            DataContext = new EditViewModel();
         }
     }
 }

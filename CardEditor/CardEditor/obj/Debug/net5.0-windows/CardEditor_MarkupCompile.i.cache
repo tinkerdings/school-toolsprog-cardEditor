@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\App.xaml
-6-1306141738
+6549959430
 
-22-2022430470
+331858547591
 193-1891726104
-MainWindow.xaml;TypeWindow.xaml;Views\BrowseView.xaml;Views\EditView.xaml;Views\MainView.xaml;Views\TypeView.xaml;
+MainWindow.xaml;TypeModal.xaml;Views\BrowseView.xaml;Views\EditView.xaml;Views\MainView.xaml;Views\TypeView.xaml;
 
 True
 

@@ -11,14 +11,8 @@ namespace CardEditor.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private EditViewModel EditViewModel { get; }
-        private BrowseViewModel BrowseViewModel { get; }
-
-
         public MainViewModel() 
         {
-            EditViewModel = new EditViewModel();
-            BrowseViewModel = new BrowseViewModel();
         }
     }
 }

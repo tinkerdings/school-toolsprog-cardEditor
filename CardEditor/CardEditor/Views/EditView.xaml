@@ -54,7 +54,7 @@
                             <Button
                                 Grid.Column="1"
                                 Style="{StaticResource StyleButtonPrimary}"
-                                Command="{Binding RandomizeCardName}"
+                                Command="{Binding RandomizeCardNameCommand}"
                                 MinWidth="100">
                                 <Button.Content>
                                     <TextBlock
@@ -102,8 +102,9 @@
                                 Text="TYPE"/>
                             <Button
                                 Grid.Column="1"
-                                MinWidth="100"
-                                Style="{StaticResource StyleButtonPrimary}">
+                                Style="{StaticResource StyleButtonPrimary}"
+                                Command="{Binding OpenTypeModalCommand}"
+                                MinWidth="100">
                                 <Button.Content>
                                     <TextBlock
                                         FontSize="11"
@@ -332,14 +333,16 @@
                     <Button 
                         Grid.Row="1"
                         Grid.Column="0"
-                        Grid.ColumnSpan="4"
+                        Grid.ColumnSpan="2"
                         Style="{StaticResource StyleButtonPrimary}"
-                        MinWidth="90"
+                        MinWidth="170"
                         Command="{Binding ShowCardCommand}"
-                        Content="SHOW THIS CARD"/>
+                        IsEnabled="{Binding CurrentCard.IsValidCard}"
+                        Content="DISPLAY CARD"/>
                     <Button 
                         Grid.Row="2"
                         Grid.Column="0"
+                        Grid.ColumnSpan="2"
                         Style="{StaticResource StyleButtonPrimary}"
                         MinWidth="90"
                         Command="{Binding ImportCardCommand}"
@@ -347,24 +350,29 @@
                     <Button 
                         Grid.Row="2"
                         Grid.Column="1"
+                        Grid.ColumnSpan="2"
                         Style="{StaticResource StyleButtonPrimary}"
                         MinWidth="90"
                         Command="{Binding ExportCardCommand}"
+                        IsEnabled="{Binding CurrentCard.IsValidCard}"
                         Content="EXPORT"/>
                     <Button 
                         Grid.Row="2"
                         Grid.Column="2"
+                        Grid.ColumnSpan="2"
                         Style="{StaticResource StyleButtonPrimary}"
                         MinWidth="90"
                         Command="{Binding DeleteCardCommand}"
                         Content="DELETE"/>
                     <Button 
-                        Grid.Row="2"
-                        Grid.Column="3"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2"
                         Style="{StaticResource StyleButtonPrimary}"
-                        MinWidth="90"
+                        MinWidth="170"
                         Command="{Binding SaveCardCommand}"
-                        Content="SAVE"/>
+                        IsEnabled="{Binding CurrentCard.IsValidCard}"
+                        Content="SAVE IN DATABASE"/>
                 </Grid>
             </Border>
             <!--END MENU-->

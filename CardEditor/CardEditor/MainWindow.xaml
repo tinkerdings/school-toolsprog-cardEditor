@@ -13,16 +13,16 @@
         MaxHeight="945" 
         MaxWidth="1000"
         FontFamily="{StaticResource Exocet}">
-    <Window.Resources>
-        <DataTemplate DataType="{x:Type viewmodels:EditViewModel}">
-            <views:EditView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewmodels:BrowseViewModel}">
-            <views:BrowseView />
-        </DataTemplate>
-    </Window.Resources>
     <Grid
         Style="{StaticResource StyleBackgroundPrimary}">
-        <views:MainView/>
+        <views:MainView DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"/>
+    <!--<Border
+        Margin="0"
+        Style="{StaticResource StyleBorderItem}" >
+        <Grid
+            Style="{StaticResource StyleBackgroundPrimary}">
+            <views:TypeView DataContext="{Binding TypeViewModel, Source={StaticResource VMS}}"/>
+        </Grid>
+    </Border>-->
     </Grid>
 </Window>

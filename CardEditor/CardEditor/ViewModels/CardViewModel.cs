@@ -65,11 +65,6 @@ namespace CardEditor.ViewModels
             }
         }
 
-        public bool isInBounds(int val, int low, int high)
-        {
-            return (val >= low && val <= high); 
-        }
-
         private int? ValidateInt(IComparable? val, int lowerBound, int upperBound)
         {
             if(val == null) return null;
@@ -77,6 +72,30 @@ namespace CardEditor.ViewModels
             if(val.CompareTo(lowerBound) < 0) { return lowerBound; }
             if(val.CompareTo(upperBound) > 0) { return upperBound; }
             return (int)val;
+        }
+
+        private void UpdateIsValidCard()
+        {
+            IsValidCard = (
+                Level != null &&
+                Strength != null &&
+                Dexterity != null &&
+                Vitality != null &&
+                Energy != null &&
+                Type != null && 
+                Name != null &&
+                Image != null);
+        }
+
+        private bool _isValidCard { get; set; }
+        public bool IsValidCard
+        {
+            get => _isValidCard;
+            set
+            {
+                _isValidCard = value;
+                OnPropertyChanged(nameof(IsValidCard));
+            }
         }
 
         public int? Level
@@ -87,6 +106,7 @@ namespace CardEditor.ViewModels
                 int? val = ValidateInt(value, 1, 99);
                 CurrentCard.Level = val;
                 OnPropertyChanged(nameof(Level));
+                UpdateIsValidCard();
             }
         }
         public int? Strength
@@ -97,6 +117,7 @@ namespace CardEditor.ViewModels
                 int? val = ValidateInt(value, 1, 999);
                 CurrentCard.Strength = val;
                 OnPropertyChanged(nameof(Strength));
+                UpdateIsValidCard();
             }
         }
         public int? Dexterity
@@ -107,6 +128,7 @@ namespace CardEditor.ViewModels
                 int? val = ValidateInt(value, 1, 999);
                 CurrentCard.Dexterity = val;
                 OnPropertyChanged(nameof(Dexterity));
+                UpdateIsValidCard();
             }
         }
         public int? Vitality
@@ -117,6 +139,7 @@ namespace CardEditor.ViewModels
                 int? val = ValidateInt(value, 1, 999);
                 CurrentCard.Vitality = val;
                 OnPropertyChanged(nameof(Vitality));
+                UpdateIsValidCard();
             }
         }
         public int? Energy
@@ -127,6 +150,7 @@ namespace CardEditor.ViewModels
                 int? val = ValidateInt(value, 1, 999);
                 CurrentCard.Energy = val;
                 OnPropertyChanged(nameof(Energy));
+                UpdateIsValidCard();
             }
         }
     }
