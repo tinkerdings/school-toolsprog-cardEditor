@@ -1,4 +1,5 @@
-﻿using CardEditor.ViewModels;
+﻿using CardEditor.Database;
+using CardEditor.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

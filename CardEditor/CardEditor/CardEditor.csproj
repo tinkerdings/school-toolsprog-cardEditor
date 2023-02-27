@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Img\" />
+    <PackageReference Include="MongoDB.Driver" Version="2.19.0" />
     <Resource Include="Fonts\Exocet.ttf" />
     <Resource Include="Img\stoneMid.jpg" />
     <Resource Include="Img\stoneDark.jpg" />

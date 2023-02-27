@@ -55,7 +55,7 @@
                                 Grid.Column="1"
                                 Style="{StaticResource StyleButtonPrimary}"
                                 Command="{Binding RandomizeCardNameCommand}"
-                                MinWidth="100">
+                                MinWidth="115">
                                 <Button.Content>
                                     <TextBlock
                                         FontSize="11"
@@ -77,7 +77,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <TextBox
+                            <utils:NameValidationTextBox
                                 Grid.Column="1"
                                 Text="{Binding CurrentCard.Name, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{StaticResource StyleTextBoxItem}"/>
@@ -104,11 +104,11 @@
                                 Grid.Column="1"
                                 Style="{StaticResource StyleButtonPrimary}"
                                 Command="{Binding OpenTypeModalCommand}"
-                                MinWidth="100">
+                                MinWidth="115">
                                 <Button.Content>
                                     <TextBlock
                                         FontSize="11"
-                                        Text="NEW TYPE"
+                                        Text="EDIT / CREATE"
                                         VerticalAlignment="Center"
                                         TextAlignment="Center"
                                         HorizontalAlignment="Center"
@@ -132,8 +132,8 @@
                                 <ComboBox
                                     Style="{StaticResource StyleComboBox}"
                                     Grid.Column="0"
-                                    ItemsSource="{Binding CardTypes}"
-                                    SelectedValue="{Binding CurrentCard.Type, UpdateSourceTrigger=PropertyChanged}"/>
+                                    ItemsSource="{Binding CardTypeNames}"
+                                    SelectedValue="{Binding SelectedCardTypeName, UpdateSourceTrigger=PropertyChanged}"/>
                             </Border>
                                 
                         </Grid>
@@ -187,6 +187,7 @@
                         Grid.Column="2"
                         Style="{StaticResource StyleButtonPrimary}"
                         Content="RESET"
+                        IsEnabled="{Binding CurrentCard.CardDirty}"
                         Command="{Binding ResetStatsCommand}"
                         FontSize="14"/>
                 </Grid>
@@ -209,7 +210,7 @@
                         Style="{StaticResource StyleTextStatItem}"
                         Foreground="#FAB616"
                         Text="LEVEL:"/>
-                    <utils:ValidationTextBox
+                    <utils:IntegerValidationTextBox
                         Grid.Column="1"
                         Style="{StaticResource StyleTextBoxItem}" 
                         Text="{Binding CurrentCard.Level, ValidatesOnDataErrors=True,
@@ -231,7 +232,7 @@
                         Style="{StaticResource StyleTextStatItem}"
                         Foreground="#D87DFF"
                         Text="STRENGTH:"/>
-                    <utils:ValidationTextBox
+                    <utils:IntegerValidationTextBox
                         Grid.Column="1"
                         Style="{StaticResource StyleTextBoxItem}"
                         Text="{Binding CurrentCard.Strength,
@@ -253,7 +254,7 @@
                         Style="{StaticResource StyleTextStatItem}"
                         Foreground="#96F505"
                         Text="DEXTERITY:"/>
-                    <utils:ValidationTextBox
+                    <utils:IntegerValidationTextBox
                         Grid.Column="1"
                         Style="{StaticResource StyleTextBoxItem}"
                         Text="{Binding CurrentCard.Dexterity,
@@ -275,7 +276,7 @@
                         Style="{StaticResource StyleTextStatItem}"
                         Foreground="#F33464"
                         Text="VITALITY:"/>
-                    <utils:ValidationTextBox
+                    <utils:IntegerValidationTextBox
                         Grid.Column="1"
                         Style="{StaticResource StyleTextBoxItem}"
                         Text="{Binding CurrentCard.Vitality,
@@ -297,7 +298,7 @@
                         Style="{StaticResource StyleTextStatItem}"
                         Foreground="#7D8DFF"
                         Text="ENERGY:"/>
-                    <utils:ValidationTextBox
+                    <utils:IntegerValidationTextBox
                         Grid.Column="1"
                         Style="{StaticResource StyleTextBoxItem}"
                         Text="{Binding CurrentCard.Energy,

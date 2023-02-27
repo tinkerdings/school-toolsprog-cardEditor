@@ -10,10 +10,15 @@ namespace CardEditor.Commands
     public class OpenTypeModalCommand : CommandBase
     {
         public TypeModal TypeModal { get; set; }
+        public EditViewModel EditViewModel { get; set; }
+        public OpenTypeModalCommand(EditViewModel editViewModel)
+        {
+            EditViewModel = editViewModel;
+        }
 
         public override void Execute(object parameter)
         {
-            TypeModal = new TypeModal();
+            TypeModal = new TypeModal(EditViewModel);
             TypeModal.Owner = App.Current.MainWindow;
             TypeModal.ShowDialog();
         }

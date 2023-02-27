@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CardEditor.Database;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -16,12 +17,14 @@ namespace CardEditor
     {
         public MainWindow MainWindow { get; set; }
         public ViewModelLocator ViewModelLocator { get; set; }
+
         protected override void OnStartup(StartupEventArgs e)
         {
+            base.OnStartup(e);
+
+            ViewModelLocator = new ViewModelLocator();
             MainWindow = new MainWindow();
             MainWindow.Show();
-
-            base.OnStartup(e);
         }
     }
 }

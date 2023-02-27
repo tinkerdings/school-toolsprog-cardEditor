@@ -31,6 +31,7 @@
                         Style="{StaticResource StyleButtonPrimary}"
                         Content="NEW CARD"
                         Command="{Binding CreateNewCardCommand}"
+                        DataContext="{Binding EditViewModel, Source={StaticResource ViewModelLocator}}"
                         FontSize="24"
                         Padding="80 5 80 5" />
                     <TextBlock

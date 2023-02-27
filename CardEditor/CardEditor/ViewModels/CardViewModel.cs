@@ -1,4 +1,5 @@
 ﻿using CardEditor.Models;
+using CardEditor.Utils;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,20 +12,34 @@ namespace CardEditor.ViewModels
 {
     public class CardViewModel : ViewModelBase
     {
+        private PropertyValidation PropertyValidation;
         private Card CurrentCard;
-        public CardViewModel()
+        public CardViewModel() : base()
         {
             CurrentCard = new Card();
+            PropertyValidation = new PropertyValidation();
+            OnPropertyChanged(nameof(Name));
+            OnPropertyChanged(nameof(Type));
+            OnPropertyChanged(nameof(Level));
+            OnPropertyChanged(nameof(Strength));
+            OnPropertyChanged(nameof(Dexterity));
+            OnPropertyChanged(nameof(Vitality));
+            OnPropertyChanged(nameof(Energy));
+            UpdateIsCardDirty();
         }
 
-        public string Name
+        public bool CardDirty { get; set; }
+
+        private void UpdateIsCardDirty()
         {
-            get => CurrentCard.Name;
-            set
-            {
-                CurrentCard.Name = value;
-                OnPropertyChanged(nameof(Name));
-            }
+            CardDirty = !(
+                Level == null &&
+                Strength == null &&
+                Dexterity == null &&
+                Vitality == null &&
+                Energy == null
+                );
+            OnPropertyChanged(nameof(CardDirty));
         }
         public CardType Type
         {
@@ -32,27 +47,31 @@ namespace CardEditor.ViewModels
             set
             {
                 CurrentCard.Type = value;
-                if(CurrentCard.Level == null)
+                if(value != null)
                 {
-                    CurrentCard.Level = CurrentCard.Type.DefaultLevel;
-                }
-                if(CurrentCard.Strength == null)
-                {
-                    CurrentCard.Strength = CurrentCard.Type.DefaultStrength;
-                }
-                if(CurrentCard.Dexterity == null)
-                {
-                    CurrentCard.Dexterity = CurrentCard.Type.DefaultDexterity;
-                }
-                if(CurrentCard.Vitality == null)
-                {
-                    CurrentCard.Vitality = CurrentCard.Type.DefaultVitality;
-                }
-                if(CurrentCard.Energy == null)
-                {
-                    CurrentCard.Energy = CurrentCard.Type.DefaultEnergy;
+                    if(CurrentCard.Level == null)
+                    {
+                        CurrentCard.Level = CurrentCard.Type.DefaultLevel;
+                    }
+                    if(CurrentCard.Strength == null)
+                    {
+                        CurrentCard.Strength = CurrentCard.Type.DefaultStrength;
+                    }
+                    if(CurrentCard.Dexterity == null)
+                    {
+                        CurrentCard.Dexterity = CurrentCard.Type.DefaultDexterity;
+                    }
+                    if(CurrentCard.Vitality == null)
+                    {
+                        CurrentCard.Vitality = CurrentCard.Type.DefaultVitality;
+                    }
+                    if(CurrentCard.Energy == null)
+                    {
+                        CurrentCard.Energy = CurrentCard.Type.DefaultEnergy;
+                    }
                 }
                 OnPropertyChanged(nameof(Type));
+                UpdateIsCardDirty();
             }
         }
         public string? Image
@@ -62,16 +81,8 @@ namespace CardEditor.ViewModels
             {
                 CurrentCard.Image = value;
                 OnPropertyChanged(nameof(Image));
+                UpdateIsCardDirty();
             }
-        }
-
-        private int? ValidateInt(IComparable? val, int lowerBound, int upperBound)
-        {
-            if(val == null) return null;
-            if(val.GetType() != typeof(int)) { return null; }
-            if(val.CompareTo(lowerBound) < 0) { return lowerBound; }
-            if(val.CompareTo(upperBound) > 0) { return upperBound; }
-            return (int)val;
         }
 
         private void UpdateIsValidCard()
@@ -98,15 +109,29 @@ namespace CardEditor.ViewModels
             }
         }
 
+        public string? Name
+        {
+            get => CurrentCard.Name;
+            set
+            {
+                string? name = PropertyValidation.ValidateString(value, 16);
+                CurrentCard.Name = name;
+                OnPropertyChanged(nameof(Name));
+                UpdateIsValidCard();
+                UpdateIsCardDirty();
+            }
+        }
+
         public int? Level
         {
             get => CurrentCard.Level;
             set
             {
-                int? val = ValidateInt(value, 1, 99);
+                int? val = PropertyValidation.ValidateInt(value, 1, 99);
                 CurrentCard.Level = val;
                 OnPropertyChanged(nameof(Level));
                 UpdateIsValidCard();
+                UpdateIsCardDirty();
             }
         }
         public int? Strength
@@ -114,10 +139,11 @@ namespace CardEditor.ViewModels
             get => CurrentCard.Strength;
             set
             {
-                int? val = ValidateInt(value, 1, 999);
+                int? val = PropertyValidation.ValidateInt(value, 1, 999);
                 CurrentCard.Strength = val;
                 OnPropertyChanged(nameof(Strength));
                 UpdateIsValidCard();
+                UpdateIsCardDirty();
             }
         }
         public int? Dexterity
@@ -125,10 +151,11 @@ namespace CardEditor.ViewModels
             get => CurrentCard.Dexterity;
             set
             {
-                int? val = ValidateInt(value, 1, 999);
+                int? val = PropertyValidation.ValidateInt(value, 1, 999);
                 CurrentCard.Dexterity = val;
                 OnPropertyChanged(nameof(Dexterity));
                 UpdateIsValidCard();
+                UpdateIsCardDirty();
             }
         }
         public int? Vitality
@@ -136,10 +163,11 @@ namespace CardEditor.ViewModels
             get => CurrentCard.Vitality;
             set
             {
-                int? val = ValidateInt(value, 1, 999);
+                int? val = PropertyValidation.ValidateInt(value, 1, 999);
                 CurrentCard.Vitality = val;
                 OnPropertyChanged(nameof(Vitality));
                 UpdateIsValidCard();
+                UpdateIsCardDirty();
             }
         }
         public int? Energy
@@ -147,10 +175,11 @@ namespace CardEditor.ViewModels
             get => CurrentCard.Energy;
             set
             {
-                int? val = ValidateInt(value, 1, 999);
+                int? val = PropertyValidation.ValidateInt(value, 1, 999);
                 CurrentCard.Energy = val;
                 OnPropertyChanged(nameof(Energy));
                 UpdateIsValidCard();
+                UpdateIsCardDirty();
             }
         }
     }

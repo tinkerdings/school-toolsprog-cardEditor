@@ -20,10 +20,10 @@ namespace CardEditor
     /// </summary>
     public partial class TypeModal : Window
     {
-        public TypeModal()
+        public TypeModal(EditViewModel editViewModel)
         {
             InitializeComponent();
-            DataContext = new TypeViewModel(this);
+            DataContext = new TypeViewModel(this, editViewModel);
         }
     }
 }

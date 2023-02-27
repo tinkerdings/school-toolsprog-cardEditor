@@ -4,12 +4,17 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace CardEditor.Models
 {
     public class CardType
     {
-        public string? TypeName { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+        public string? Name { get; set; }
         public int? DefaultLevel {get; set;}
         public int? DefaultStrength {get; set;}
         public int? DefaultDexterity {get; set;}
@@ -23,7 +28,7 @@ namespace CardEditor.Models
             int? vitality = null,
             int? energy = null)
         {
-            TypeName = name;
+            Name = name;
             DefaultLevel = level;
             DefaultStrength = strength;
             DefaultDexterity = dexterity;
@@ -34,6 +39,8 @@ namespace CardEditor.Models
 
     public class Card
     {
+        [BsonId]
+        public string Id { get; set;}
         public string? Name { get; set; }
         public CardType? Type { get; set; }
         public int? Level { get; set; }
@@ -53,8 +60,8 @@ namespace CardEditor.Models
             int? energy = null,
             string? image = null)
         {
-            Name = null;
-            Type = new CardType();
+            Name = name;
+            Type = cardType;
             Level = level;
             Strength = strength;
             Dexterity = dexterity;
