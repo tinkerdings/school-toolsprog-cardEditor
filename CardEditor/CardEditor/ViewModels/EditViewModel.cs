@@ -31,25 +31,29 @@ namespace CardEditor.ViewModels
         public ICommand RandomizeCardNameCommand { get; }
         public ICommand SaveCardCommand { get; }
 
-        private string _SelectedCardTypeName { get; set; }
-        private CardType SelectedCardType { get; set; }
-        public string SelectedCardTypeName
+        private string? _SelectedCardTypeName { get; set; }
+        private CardType? SelectedCardType { get; set; }
+        public string? SelectedCardTypeName
         {
             get => _SelectedCardTypeName;
             set
             {
                 _SelectedCardTypeName = value;
                 SelectedCardType = Database.GetCardType(value);
-                CurrentCard.Level = SelectedCardType.DefaultLevel;
-                CurrentCard.Strength = SelectedCardType.DefaultStrength;
-                CurrentCard.Dexterity = SelectedCardType.DefaultDexterity;
-                CurrentCard.Vitality = SelectedCardType.DefaultVitality;
-                CurrentCard.Energy = SelectedCardType.DefaultEnergy;
+                if(SelectedCardType != null)
+                {
+                    CurrentCard.Type = SelectedCardType;
+                    CurrentCard.Level = SelectedCardType.DefaultLevel;
+                    CurrentCard.Strength = SelectedCardType.DefaultStrength;
+                    CurrentCard.Dexterity = SelectedCardType.DefaultDexterity;
+                    CurrentCard.Vitality = SelectedCardType.DefaultVitality;
+                    CurrentCard.Energy = SelectedCardType.DefaultEnergy;
+                }
                 OnPropertyChanged(nameof(SelectedCardTypeName));
             }
         }
         private List<CardType> _CardTypes { get; set; }
-        private List<string> _CardTypeNames { get; set; }
+        private List<string?> _CardTypeNames { get; set; }
         public List<CardType> CardTypes 
         {
             get => _CardTypes;
@@ -59,7 +63,7 @@ namespace CardEditor.ViewModels
                 OnPropertyChanged(nameof(CardTypes));
             }
         }
-        public List<string> CardTypeNames 
+        public List<string?> CardTypeNames 
         {
             get => _CardTypeNames;
             set
@@ -71,9 +75,11 @@ namespace CardEditor.ViewModels
 
         public void UpdateCardTypeList()
         {
-            var cardTypes = Database.LoadRecords<CardType>("CardTypes");
+            var cardTypes = Database.LoadRecords<CardType>();
             CardTypes = cardTypes;
             CardTypeNames = CardTypes.Select(o => o.Name).ToList();
+            SelectedCardTypeName = SelectedCardTypeName;
+            OnPropertyChanged(nameof(SelectedCardType));
         }
 
         public void UpdateCard()

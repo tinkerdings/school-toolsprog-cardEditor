@@ -30,7 +30,7 @@ namespace CardEditor.ViewModels
 
         public bool CardDirty { get; set; }
 
-        private void UpdateIsCardDirty()
+        public void UpdateIsCardDirty()
         {
             CardDirty = !(
                 Level == null &&
@@ -85,7 +85,7 @@ namespace CardEditor.ViewModels
             }
         }
 
-        private void UpdateIsValidCard()
+        public void UpdateIsValidCard()
         {
             IsValidCard = (
                 Level != null &&

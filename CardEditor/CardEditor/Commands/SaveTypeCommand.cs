@@ -17,8 +17,8 @@ namespace CardEditor.Commands
         public override void Execute(object parameter)
         {
             TypeViewModel.Database.UpsertCardType(TypeViewModel.NewType.Name, TypeViewModel.NewType);
-            TypeViewModel.ResetTypeCommand.Execute(TypeViewModel);
             TypeViewModel.EditViewModel.UpdateCardTypeList();
+            TypeViewModel.CreateNewTypeCommand.Execute(TypeViewModel);
         }
     }
 }

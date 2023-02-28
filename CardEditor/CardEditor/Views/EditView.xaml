@@ -156,7 +156,7 @@
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
                             Stretch="UniformToFill"
-                            Source="{Binding CurrentCard.Image, UpdateSourceTrigger=PropertyChanged}" />
+                            Source="{Binding CurrentCard.Image, UpdateSourceTrigger=PropertyChanged, TargetNullValue={x:Null}}" />
                     </Button>
                 </Border>
                 <!--END Card image field-->

@@ -3,6 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,15 +33,9 @@ namespace CardEditor.Database
             db = client.GetDatabase(database);
         }
 
-        public void InsertRecord<T>(T record)
+        public List<T> LoadRecords<T>()
         {
             var collection = GetCollection<T>();
-            collection.InsertOne(record);
-        }
-
-        public List<T> LoadRecords<T>(string table)
-        {
-            var collection = db.GetCollection<T>(table);
 
             return collection.Find(new BsonDocument()).ToList();
         }
@@ -76,31 +71,14 @@ namespace CardEditor.Database
             return CardTypes.Find(t => t.Name == typeName).FirstOrDefault();
         }
 
-        public T LoadRecordById<T>(string table, Guid id)
-        {
-            var collection = db.GetCollection<T>(table);
-            var filter = Builders<T>.Filter.Eq("Id", id);
+        //public T LoadRecordById<T>(string table, Guid id)
+        //{
+        //    var collection = db.GetCollection<T>(table);
+        //    var filter = Builders<T>.Filter.Eq("Id", id);
 
-            return collection.Find(filter).First();
-        }
+        //    return collection.Find(filter).First();
+        //}
 
-        public void UpsertCard(string cardName, Card card)
-        {
-            var collection = GetCollection<Card>();
-            if(Exists<Card>(cardName))
-            {
-                Card c = GetCard(cardName);
-                var id = c.Id;
-                var result = collection.ReplaceOne(
-                    new BsonDocument("_id", id),
-                    card,
-                    new ReplaceOptions { IsUpsert = true });
-            }
-            else
-            {
-                InsertRecord<Card>(card);
-            }
-        }
         public void UpsertCardType(string typeName, CardType cardType)
         {
             var collection = GetCollection<CardType>();
@@ -108,22 +86,38 @@ namespace CardEditor.Database
             {
                 CardType t = GetCardType(typeName);
                 var id = t.Id;
-                var result = collection.ReplaceOne(
-                    new BsonDocument("_id", id),
-                    cardType,
-                    new ReplaceOptions { IsUpsert = true });
+                DeleteCardType(typeName);
+                InsertRecord<CardType>(cardType);
             }
             else
             {
                 InsertRecord<CardType>(cardType);
             }
         }
-
-        public void DeleteRecord<T>(string table, Guid id)
+        public void UpsertCard(string cardName, Card card)
         {
-            var collection = db.GetCollection<T>(table);
-            var filter = Builders<T>.Filter.Eq("Id", id);
-            collection.DeleteOne(filter);
+            var collection = GetCollection<Card>();
+            if(Exists<Card>(cardName))
+            {
+                Card c = GetCard(cardName);
+                var id = c.Id;
+                DeleteCardType(cardName);
+                InsertRecord<Card>(card);
+            }
+            else
+            {
+                InsertRecord<Card>(card);
+            }
+        }
+        public void InsertRecord<T>(T record)
+        {
+            var collection = GetCollection<T>();
+            collection.InsertOneAsync(record);
+        }
+        public void DeleteCardType(string name)
+        {
+            var collection = GetCollection<CardType>();
+            collection.DeleteOneAsync(r => r.Name == name);
         }
     }
 }

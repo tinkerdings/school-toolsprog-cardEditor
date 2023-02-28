@@ -19,16 +19,25 @@
                 Style="{StaticResource StyleBorderTitlePrimary}">
                 <Grid>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock
+                    <Button 
                         Grid.Column="0"
-                        Style="{StaticResource StyleTextTitleSecondary}"
-                        Text="NEW CARD TYPE"/>
-                    <Button
+                        Style="{StaticResource StyleButtonPrimary}"
+                        FontSize="18"
+                        Command="{Binding CreateNewTypeCommand}"
+                        Content="NEW"/>
+                    <TextBlock
+                        HorizontalAlignment="Left"
+                        Margin="44 0 0 0"
                         Grid.Column="1"
+                        Style="{StaticResource StyleTextTitleSecondary}"
+                        Text="CARD TYPES"/>
+                    <Button
+                        Grid.Column="2"
                         Style="{StaticResource StyleButtonPrimary}"
                         FontSize="20"
                         MinWidth="50"

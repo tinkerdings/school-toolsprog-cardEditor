@@ -19,6 +19,7 @@ namespace CardEditor.ViewModels
         public ICommand RandomizeTypeStatsCommand { get; }
         public ICommand ResetTypeCommand { get; }
         public ICommand SaveTypeCommand { get; }
+        public ICommand CreateNewTypeCommand { get; }
         public CardType NewType { get; set; }
         TypeModal TypeModal { get; }
         PropertyValidation PropertyValidation { get; set; }
@@ -33,6 +34,7 @@ namespace CardEditor.ViewModels
             CloseTypeModalCommand = new CloseTypeModalCommand(TypeModal);
             RandomizeTypeNameCommand = new RandomizeTypeNameCommand(this);
             RandomizeTypeStatsCommand = new RandomizeTypeStatsCommand(this);
+            CreateNewTypeCommand = new CreateNewTypeCommand(this);
             SaveTypeCommand = new SaveTypeCommand(this);
             ResetTypeCommand = new ResetTypeCommand(this);
             PropertyValidation= new PropertyValidation();

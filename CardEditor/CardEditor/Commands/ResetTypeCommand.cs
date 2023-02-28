@@ -16,12 +16,6 @@ namespace CardEditor.Commands
         }
         public override void Execute(object parameter)
         {
-            TypeViewModel.Name = null;
-            TypeViewModel.DefaultLevel = null;
-            TypeViewModel.DefaultStrength = null;
-            TypeViewModel.DefaultDexterity = null;
-            TypeViewModel.DefaultVitality = null;
-            TypeViewModel.DefaultEnergy = null;
         }
     }
 }

@@ -21,6 +21,7 @@ namespace CardEditor.Commands
         {
             EditViewModel.CurrentCard.Name = null;
             EditViewModel.CurrentCard.Type = null;
+            EditViewModel.SelectedCardTypeName = null;
             EditViewModel.CurrentCard.Image = null;
             EditViewModel.ResetStatsCommand.Execute(null);
         }

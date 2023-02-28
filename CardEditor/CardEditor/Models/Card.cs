@@ -40,6 +40,7 @@ namespace CardEditor.Models
     public class Card
     {
         [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set;}
         public string? Name { get; set; }
         public CardType? Type { get; set; }
