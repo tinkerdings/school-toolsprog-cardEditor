@@ -12,12 +12,14 @@ using System.Windows.Input;
 using System.Text.RegularExpressions;
 using CardEditor.Database;
 using System.Diagnostics;
+using MongoDB.Bson.Serialization.Serializers;
 
 namespace CardEditor.ViewModels
 {
     public class EditViewModel : ViewModelBase
     {
         //public TypeModal TypeModal { get; }
+        public ViewModelLocator ViewModelLocator { get; set; }
         public CardViewModel CurrentCard { get; set; }
         public ICommand CreateNewCardCommand { get; set; }
         public ICommand UploadImageCommand { get; }
@@ -65,6 +67,20 @@ namespace CardEditor.ViewModels
             }
         }
 
+        public void SetCard(Card card)
+        {
+            ResetCard();
+            SelectedCardTypeName = card.Type.Name;
+            SelectedCardType = card.Type;
+            CurrentCard.Name = card.Name;
+            CurrentCard.Level = card.Level;
+            CurrentCard.Image = card.Image;
+            CurrentCard.Strength = card.Strength;
+            CurrentCard.Dexterity = card.Dexterity;
+            CurrentCard.Vitality = card.Vitality;
+            CurrentCard.Energy = card.Energy;
+        }
+
         public void UpdateCardTypeList()
         {
             var cardTypes = Database.LoadRecords<CardType>();
@@ -90,6 +106,7 @@ namespace CardEditor.ViewModels
         {
             CurrentCard = new CardViewModel();
             ResetCard();
+            ViewModelLocator = new ViewModelLocator();
             UploadImageCommand = new UploadImageCommand(CurrentCard);
             OpenTypeModalCommand = new OpenTypeModalCommand(this);
             RandomizeStatsCommand = new RandomizeStatsCommand(CurrentCard);
@@ -98,7 +115,7 @@ namespace CardEditor.ViewModels
             ResetStatsCommand = new ResetStatsCommand(this);
             ShowCardCommand = new ShowCardCommand();
             SaveCardCommand = new SaveCardCommand(this);
-            DeleteCardCommand = new DeleteCardCommand();
+            DeleteCardCommand = new DeleteCardCommand(this);
             RandomizeCardNameCommand = new RandomizeCardNameCommand(CurrentCard);
             CreateNewCardCommand = new CreateNewCardCommand(this);
 

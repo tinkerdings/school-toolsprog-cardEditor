@@ -23,6 +23,7 @@ namespace CardEditor
             base.OnStartup(e);
 
             ViewModelLocator = new ViewModelLocator();
+            ViewModelLocator.InitViewModels();
             MainWindow = new MainWindow();
             MainWindow.Show();
         }

@@ -10,11 +10,15 @@ namespace CardEditor
 {
     public class ViewModelLocator
     {
-        public MainViewModel MainViewModel { get; set; }
-        public EditViewModel EditViewModel { get; set; }
-        public CardViewModel CardViewModel { get; set; }
-        public BrowseViewModel BrowseViewModel { get; set; }
+        public static MainViewModel? MainViewModel { get; set; }
+        public static EditViewModel? EditViewModel { get; set; }
+        public static CardViewModel? CardViewModel { get; set; }
+        public static BrowseViewModel? BrowseViewModel { get; set; }
         public ViewModelLocator()
+        {
+        }
+
+        public void InitViewModels()
         {
             MainViewModel = new MainViewModel();
             EditViewModel = new EditViewModel();

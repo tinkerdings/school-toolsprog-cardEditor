@@ -3,6 +3,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,23 @@ namespace CardEditor.Database
         private IMongoDatabase db;
         public IMongoCollection<Card> Cards => GetCollection<Card>();
         public IMongoCollection<CardType> CardTypes => GetCollection<CardType>();
+
+        private static ObservableCollection<Card> _cards { get; set; }
+
+        public ObservableCollection<Card> ObservableCards
+        {
+            get
+            {
+                _cards = new ObservableCollection<Card>();
+                var allCards = LoadRecords<Card>();
+                for(int i = allCards.Count-1; i >= 0; i--)
+                {
+                    _cards.Add(allCards[i]);
+                }
+
+                return _cards;
+            }
+        }
 
         private readonly Dictionary<Type, string> _Collections = new()
         {
@@ -86,18 +104,20 @@ namespace CardEditor.Database
                 InsertRecord<CardType>(cardType);
             }
         }
-        public void UpsertCard(string cardName, Card card)
+        public void UpsertCard(Card card)
         {
             var collection = GetCollection<Card>();
-            if(Exists<Card>(cardName))
+            if(Exists<Card>(card.Name))
             {
-                Card c = GetCard(cardName);
+                Debug.WriteLine("Card already exists, overwriting");
+                Card c = GetCard(card.Name);
                 var id = c.Id;
-                DeleteCardType(cardName);
+                DeleteCard(card.Name);
                 InsertRecord<Card>(card);
             }
             else
             {
+                Debug.WriteLine("Card did not already exist.");
                 InsertRecord<Card>(card);
             }
         }
@@ -109,7 +129,12 @@ namespace CardEditor.Database
         public void DeleteCardType(string name)
         {
             var collection = GetCollection<CardType>();
-            collection.DeleteOneAsync(r => r.Name == name);
+            collection.DeleteOneAsync(t => t.Name == name);
+        }
+        public void DeleteCard(string name)
+        {
+            var collection = GetCollection<Card>();
+            collection.DeleteOneAsync(c => c.Name == name);
         }
     }
 }

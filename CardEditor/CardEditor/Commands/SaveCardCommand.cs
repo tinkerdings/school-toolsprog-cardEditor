@@ -17,7 +17,10 @@ namespace CardEditor.Commands
 
         public override void Execute(object parameter)
         {
-            EditViewModel.Database.UpsertCard(EditViewModel.CurrentCard.Name, EditViewModel.CurrentCard.CardData);
+            EditViewModel.Database.UpsertCard(EditViewModel.CurrentCard.CardData);
+            var ViewModelLocator = EditViewModel.ViewModelLocator;
+            var BrowseViewModel = ViewModelLocator.BrowseViewModel;
+            BrowseViewModel.Update();
             EditViewModel.ResetCard();
         }
     }

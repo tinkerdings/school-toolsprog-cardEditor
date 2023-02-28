@@ -11,8 +11,10 @@ namespace CardEditor.ViewModels
 {
     public class BrowseViewModel : ViewModelBase
     {
-        private readonly ObservableCollection<Card> _cards;
-        public IEnumerable<Card> Cards => _cards;
+        public ObservableCollection<Card> ObservableCards
+        {
+            get => Database.ObservableCards;
+        }
 
         public Card? SelectedCard
         {
@@ -27,28 +29,28 @@ namespace CardEditor.ViewModels
             }
         }
 
+        public void Update()
+        {
+            OnPropertyChanged(nameof(ObservableCards));
+        }
+
+        public ViewModelLocator ViewModelLocator { get; set; }
+
         public event Action SelectedCardChanged;
         private Card? _SelectedCard;
         public BrowseViewModel()
         {
-            _cards = new ObservableCollection<Card>();
-            _cards.CollectionChanged += CardCollectionChanged;
-            var allCards = Database.LoadRecords<Card>();
-            foreach (var card in allCards)
-            {
-                _cards.Add(card);
-            }
+            ViewModelLocator = new ViewModelLocator();
             SelectedCardChanged += SelectedCardChangedCallback;
         }
 
         private void SelectedCardChangedCallback()
         {
             OnPropertyChanged(nameof(SelectedCard));
-        }
-
-        public void CardCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            OnPropertyChanged(nameof(Cards));
+            if(SelectedCard != null)
+            {
+                ViewModelLocator.EditViewModel.SetCard(SelectedCard);
+            }
         }
     }
 }

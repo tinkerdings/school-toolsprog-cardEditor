@@ -29,7 +29,7 @@
                 <ListView
                     HorizontalContentAlignment="Stretch"
                     Style="{StaticResource StyleListView}"
-                    ItemsSource="{Binding Cards}"
+                    ItemsSource="{Binding ObservableCards}"
                     SelectedItem="{Binding SelectedCard}"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                     SelectionMode="Single">
