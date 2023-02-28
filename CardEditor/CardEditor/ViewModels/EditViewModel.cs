@@ -40,15 +40,7 @@ namespace CardEditor.ViewModels
             {
                 _SelectedCardTypeName = value;
                 SelectedCardType = Database.GetCardType(value);
-                if(SelectedCardType != null)
-                {
-                    CurrentCard.Type = SelectedCardType;
-                    CurrentCard.Level = SelectedCardType.DefaultLevel;
-                    CurrentCard.Strength = SelectedCardType.DefaultStrength;
-                    CurrentCard.Dexterity = SelectedCardType.DefaultDexterity;
-                    CurrentCard.Vitality = SelectedCardType.DefaultVitality;
-                    CurrentCard.Energy = SelectedCardType.DefaultEnergy;
-                }
+                CurrentCard.Type = SelectedCardType;
                 OnPropertyChanged(nameof(SelectedCardTypeName));
             }
         }
@@ -79,7 +71,14 @@ namespace CardEditor.ViewModels
             CardTypes = cardTypes;
             CardTypeNames = CardTypes.Select(o => o.Name).ToList();
             SelectedCardTypeName = SelectedCardTypeName;
-            OnPropertyChanged(nameof(SelectedCardType));
+            //OnPropertyChanged(nameof(SelectedCardType));
+        }
+
+        public void ResetCard()
+        {
+            CurrentCard.ResetCard();
+            SelectedCardTypeName = null;
+            OnPropertyChanged(nameof(CurrentCard));
         }
 
         public void UpdateCard()
@@ -90,14 +89,15 @@ namespace CardEditor.ViewModels
         public EditViewModel() : base()
         {
             CurrentCard = new CardViewModel();
+            ResetCard();
             UploadImageCommand = new UploadImageCommand(CurrentCard);
             OpenTypeModalCommand = new OpenTypeModalCommand(this);
             RandomizeStatsCommand = new RandomizeStatsCommand(CurrentCard);
             ExportCardCommand = new ExportCardCommand();
             ImportCardCommand = new ImportCardCommand();
-            ResetStatsCommand = new ResetStatsCommand(CurrentCard);
+            ResetStatsCommand = new ResetStatsCommand(this);
             ShowCardCommand = new ShowCardCommand();
-            SaveCardCommand = new SaveCardCommand();
+            SaveCardCommand = new SaveCardCommand(this);
             DeleteCardCommand = new DeleteCardCommand();
             RandomizeCardNameCommand = new RandomizeCardNameCommand(CurrentCard);
             CreateNewCardCommand = new CreateNewCardCommand(this);

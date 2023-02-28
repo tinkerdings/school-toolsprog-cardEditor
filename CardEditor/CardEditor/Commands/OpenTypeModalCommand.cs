@@ -1,6 +1,9 @@
-﻿using CardEditor.ViewModels;
+﻿using CardEditor.Database;
+using CardEditor.Models;
+using CardEditor.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,12 +26,13 @@ namespace CardEditor.Commands
             TypeViewModel = TypeModal.TypeViewModel;
             if (EditViewModel.SelectedCardTypeName != null)
             {
-                TypeViewModel.Name = EditViewModel.CurrentCard.Type.Name;
-                TypeViewModel.DefaultLevel = EditViewModel.CurrentCard.Level;
-                TypeViewModel.DefaultStrength = EditViewModel.CurrentCard.Strength;
-                TypeViewModel.DefaultDexterity = EditViewModel.CurrentCard.Dexterity;
-                TypeViewModel.DefaultVitality = EditViewModel.CurrentCard.Vitality;
-                TypeViewModel.DefaultEnergy = EditViewModel.CurrentCard.Energy;
+                CardType currentType = TypeViewModel.Database.GetCardType(EditViewModel.SelectedCardTypeName);
+                TypeViewModel.Name = currentType.Name;
+                TypeViewModel.DefaultLevel = currentType.DefaultLevel;
+                TypeViewModel.DefaultStrength = currentType.DefaultStrength;
+                TypeViewModel.DefaultDexterity = currentType.DefaultDexterity;
+                TypeViewModel.DefaultVitality = currentType.DefaultVitality;
+                TypeViewModel.DefaultEnergy = currentType.DefaultEnergy;
             }
             TypeModal.Owner = App.Current.MainWindow;
             TypeModal.ShowDialog();

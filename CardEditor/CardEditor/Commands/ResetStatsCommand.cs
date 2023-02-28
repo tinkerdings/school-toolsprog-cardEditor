@@ -1,4 +1,5 @@
-﻿using CardEditor.ViewModels;
+﻿using CardEditor.Models;
+using CardEditor.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,19 @@ namespace CardEditor.Commands
 {
     public class ResetStatsCommand : CommandBase
     {
-        public CardViewModel CardViewModel { get; set; } 
-        public ResetStatsCommand(CardViewModel cardViewModel)
+        public EditViewModel EditViewModel { get; set; } 
+        public ResetStatsCommand(EditViewModel editViewModel)
         {
-            CardViewModel = cardViewModel;
+            EditViewModel = editViewModel;
         }
         public override void Execute(object parameter)
         {
-            CardViewModel.Level = null;
-            CardViewModel.Strength = null;
-            CardViewModel.Dexterity = null;
-            CardViewModel.Vitality = null;
-            CardViewModel.Energy = null;
+            CardType currentType = EditViewModel.Database.GetCardType(EditViewModel.SelectedCardTypeName);
+            EditViewModel.CurrentCard.Level = currentType.DefaultLevel;
+            EditViewModel.CurrentCard.Strength = currentType.DefaultStrength;
+            EditViewModel.CurrentCard.Dexterity = currentType.DefaultDexterity;
+            EditViewModel.CurrentCard.Vitality = currentType.DefaultVitality;
+            EditViewModel.CurrentCard.Energy = currentType.DefaultEnergy;
         }
     }
 }

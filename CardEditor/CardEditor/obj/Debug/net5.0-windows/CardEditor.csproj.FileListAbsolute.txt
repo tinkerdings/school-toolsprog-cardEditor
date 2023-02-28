@@ -47,3 +47,5 @@ C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\bin\Debug\net5.0-windows
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\bin\Debug\net5.0-windows\runtimes\osx\native\libmongocrypt.dylib
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\bin\Debug\net5.0-windows\runtimes\win\native\mongocrypt.dll
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\CardEditor.csproj.CopyComplete
+C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\Views\CardListing.g.cs
+C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\Views\CardListing.baml

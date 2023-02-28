@@ -18,7 +18,7 @@ namespace CardEditor.Commands
         {
             TypeViewModel.Database.UpsertCardType(TypeViewModel.NewType.Name, TypeViewModel.NewType);
             TypeViewModel.EditViewModel.UpdateCardTypeList();
-            TypeViewModel.CreateNewTypeCommand.Execute(TypeViewModel);
+            //TypeViewModel.CreateNewTypeCommand.Execute(TypeViewModel);
         }
     }
 }

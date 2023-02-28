@@ -150,12 +150,7 @@
                         Background="#000"
                         Command="{Binding UploadImageCommand}">
                         <Image 
-                            MinWidth="180"
-                            MaxWidth="180"
-                            MinHeight="190"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Stretch="UniformToFill"
+                            Style="{StaticResource StyleImageCard}"
                             Source="{Binding CurrentCard.Image, UpdateSourceTrigger=PropertyChanged, TargetNullValue={x:Null}}" />
                     </Button>
                 </Border>
@@ -186,7 +181,7 @@
                     <Button
                         Grid.Column="2"
                         Style="{StaticResource StyleButtonPrimary}"
-                        Content="RESET"
+                        Content="DEFAULT"
                         IsEnabled="{Binding CurrentCard.CardDirty}"
                         Command="{Binding ResetStatsCommand}"
                         FontSize="14"/>
@@ -373,7 +368,7 @@
                         MinWidth="170"
                         Command="{Binding SaveCardCommand}"
                         IsEnabled="{Binding CurrentCard.IsValidCard}"
-                        Content="SAVE IN DATABASE"/>
+                        Content="UPSERT IN DATABASE"/>
                 </Grid>
             </Border>
             <!--END MENU-->

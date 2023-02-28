@@ -27,7 +27,18 @@
                 Style="{StaticResource StyleBorderView}">
 
                 <ListView
-                    Style="{StaticResource StyleListView}"/>
+                    HorizontalContentAlignment="Stretch"
+                    Style="{StaticResource StyleListView}"
+                    ItemsSource="{Binding Cards}"
+                    SelectedItem="{Binding SelectedCard}"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    SelectionMode="Single">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <local:CardListing/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </Border>
             
         </Grid>

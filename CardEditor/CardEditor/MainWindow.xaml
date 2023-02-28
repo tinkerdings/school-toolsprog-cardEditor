@@ -16,13 +16,5 @@
     <Grid
         Style="{StaticResource StyleBackgroundPrimary}">
         <views:MainView DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"/>
-    <!--<Border
-        Margin="0"
-        Style="{StaticResource StyleBorderItem}" >
-        <Grid
-            Style="{StaticResource StyleBackgroundPrimary}">
-            <views:TypeView DataContext="{Binding TypeViewModel, Source={StaticResource VMS}}"/>
-        </Grid>
-    </Border>-->
     </Grid>
 </Window>

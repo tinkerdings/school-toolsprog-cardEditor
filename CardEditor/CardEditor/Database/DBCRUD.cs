@@ -71,14 +71,6 @@ namespace CardEditor.Database
             return CardTypes.Find(t => t.Name == typeName).FirstOrDefault();
         }
 
-        //public T LoadRecordById<T>(string table, Guid id)
-        //{
-        //    var collection = db.GetCollection<T>(table);
-        //    var filter = Builders<T>.Filter.Eq("Id", id);
-
-        //    return collection.Find(filter).First();
-        //}
-
         public void UpsertCardType(string typeName, CardType cardType)
         {
             var collection = GetCollection<CardType>();

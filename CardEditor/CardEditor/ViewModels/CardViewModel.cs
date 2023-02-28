@@ -13,11 +13,28 @@ namespace CardEditor.ViewModels
     public class CardViewModel : ViewModelBase
     {
         private PropertyValidation PropertyValidation;
-        private Card CurrentCard;
+        private Card _CardData;
+        public Card CardData
+        {
+            set
+            {
+                _CardData = value;
+            }
+            get
+            {
+                return _CardData;
+            }
+        }
         public CardViewModel() : base()
         {
-            CurrentCard = new Card();
+            CardData = new Card();
             PropertyValidation = new PropertyValidation();
+            Name = null;
+            Level = null;
+            Strength = null;
+            Dexterity = null;
+            Vitality = null;
+            Energy = null;
             OnPropertyChanged(nameof(Name));
             OnPropertyChanged(nameof(Type));
             OnPropertyChanged(nameof(Level));
@@ -29,6 +46,26 @@ namespace CardEditor.ViewModels
         }
 
         public bool CardDirty { get; set; }
+
+        public void ResetCard()
+        {
+            CardData = new Card();
+            Name = null;
+            Level = null;
+            Strength = null;
+            Dexterity = null;
+            Vitality = null;
+            Energy = null;
+            OnPropertyChanged(nameof(Name));
+            OnPropertyChanged(nameof(Type));
+            OnPropertyChanged(nameof(Level));
+            OnPropertyChanged(nameof(Strength));
+            OnPropertyChanged(nameof(Dexterity));
+            OnPropertyChanged(nameof(Vitality));
+            OnPropertyChanged(nameof(Energy));
+            UpdateIsValidCard();
+            UpdateIsCardDirty();
+        }
 
         public void UpdateIsCardDirty()
         {
@@ -43,31 +80,31 @@ namespace CardEditor.ViewModels
         }
         public CardType Type
         {
-            get => CurrentCard.Type;
+            get => CardData.Type;
             set
             {
-                CurrentCard.Type = value;
+                CardData.Type = value;
                 if(value != null)
                 {
-                    if(CurrentCard.Level == null)
+                    if(Level == null)
                     {
-                        CurrentCard.Level = CurrentCard.Type.DefaultLevel;
+                        Level = CardData.Type.DefaultLevel;
                     }
-                    if(CurrentCard.Strength == null)
+                    if(Strength == null)
                     {
-                        CurrentCard.Strength = CurrentCard.Type.DefaultStrength;
+                       Strength = CardData.Type.DefaultStrength;
                     }
-                    if(CurrentCard.Dexterity == null)
+                    if(Dexterity == null)
                     {
-                        CurrentCard.Dexterity = CurrentCard.Type.DefaultDexterity;
+                        Dexterity = CardData.Type.DefaultDexterity;
                     }
-                    if(CurrentCard.Vitality == null)
+                    if(Vitality == null)
                     {
-                        CurrentCard.Vitality = CurrentCard.Type.DefaultVitality;
+                        Vitality = CardData.Type.DefaultVitality;
                     }
-                    if(CurrentCard.Energy == null)
+                    if(Energy == null)
                     {
-                        CurrentCard.Energy = CurrentCard.Type.DefaultEnergy;
+                        Energy = CardData.Type.DefaultEnergy;
                     }
                 }
                 OnPropertyChanged(nameof(Type));
@@ -76,11 +113,12 @@ namespace CardEditor.ViewModels
         }
         public string? Image
         {
-            get => CurrentCard.Image;
+            get => CardData.Image;
             set
             {
-                CurrentCard.Image = value;
+                CardData.Image = value;
                 OnPropertyChanged(nameof(Image));
+                UpdateIsValidCard();
                 UpdateIsCardDirty();
             }
         }
@@ -111,11 +149,11 @@ namespace CardEditor.ViewModels
 
         public string? Name
         {
-            get => CurrentCard.Name;
+            get => CardData.Name;
             set
             {
                 string? name = PropertyValidation.ValidateString(value, 16);
-                CurrentCard.Name = name;
+                CardData.Name = name;
                 OnPropertyChanged(nameof(Name));
                 UpdateIsValidCard();
                 UpdateIsCardDirty();
@@ -124,11 +162,11 @@ namespace CardEditor.ViewModels
 
         public int? Level
         {
-            get => CurrentCard.Level;
+            get => CardData.Level;
             set
             {
                 int? val = PropertyValidation.ValidateInt(value, 1, 99);
-                CurrentCard.Level = val;
+                CardData.Level = val;
                 OnPropertyChanged(nameof(Level));
                 UpdateIsValidCard();
                 UpdateIsCardDirty();
@@ -136,11 +174,11 @@ namespace CardEditor.ViewModels
         }
         public int? Strength
         {
-            get => CurrentCard.Strength;
+            get => CardData.Strength;
             set
             {
                 int? val = PropertyValidation.ValidateInt(value, 1, 999);
-                CurrentCard.Strength = val;
+                CardData.Strength = val;
                 OnPropertyChanged(nameof(Strength));
                 UpdateIsValidCard();
                 UpdateIsCardDirty();
@@ -148,11 +186,11 @@ namespace CardEditor.ViewModels
         }
         public int? Dexterity
         {
-            get => CurrentCard.Dexterity;
+            get => CardData.Dexterity;
             set
             {
                 int? val = PropertyValidation.ValidateInt(value, 1, 999);
-                CurrentCard.Dexterity = val;
+                CardData.Dexterity = val;
                 OnPropertyChanged(nameof(Dexterity));
                 UpdateIsValidCard();
                 UpdateIsCardDirty();
@@ -160,11 +198,11 @@ namespace CardEditor.ViewModels
         }
         public int? Vitality
         {
-            get => CurrentCard.Vitality;
+            get => CardData.Vitality;
             set
             {
                 int? val = PropertyValidation.ValidateInt(value, 1, 999);
-                CurrentCard.Vitality = val;
+                CardData.Vitality = val;
                 OnPropertyChanged(nameof(Vitality));
                 UpdateIsValidCard();
                 UpdateIsCardDirty();
@@ -172,11 +210,11 @@ namespace CardEditor.ViewModels
         }
         public int? Energy
         {
-            get => CurrentCard.Energy;
+            get => CardData.Energy;
             set
             {
                 int? val = PropertyValidation.ValidateInt(value, 1, 999);
-                CurrentCard.Energy = val;
+                CardData.Energy = val;
                 OnPropertyChanged(nameof(Energy));
                 UpdateIsValidCard();
                 UpdateIsCardDirty();

@@ -19,11 +19,7 @@ namespace CardEditor.Commands
 
         public override void Execute(object parameter)
         {
-            EditViewModel.CurrentCard.Name = null;
-            EditViewModel.CurrentCard.Type = null;
-            EditViewModel.SelectedCardTypeName = null;
-            EditViewModel.CurrentCard.Image = null;
-            EditViewModel.ResetStatsCommand.Execute(null);
+            EditViewModel.ResetCard();
         }
     }
 }

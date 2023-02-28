@@ -269,7 +269,7 @@
                                 MinWidth="170"
                                 Command="{Binding SaveTypeCommand}"
                                 IsEnabled="{Binding IsValidType}"
-                                Content="CREATE"/>
+                                Content="UPSERT"/>
                             <Button 
                                 Grid.Row="2"
                                 Grid.Column="1"
