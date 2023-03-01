@@ -20,20 +20,14 @@ namespace CardEditor.Models
         public int? DefaultDexterity {get; set;}
         public int? DefaultVitality {get; set;}
         public int? DefaultEnergy {get; set;}
-        public CardType(
-            string? name = null,
-            int? level = null,
-            int? strength = null,
-            int? dexterity = null,
-            int? vitality = null,
-            int? energy = null)
+        public CardType()
         {
-            Name = name;
-            DefaultLevel = level;
-            DefaultStrength = strength;
-            DefaultDexterity = dexterity;
-            DefaultVitality = vitality;
-            DefaultEnergy = energy;
+            Name = null;
+            DefaultLevel = null;
+            DefaultStrength = null;
+            DefaultDexterity = null;
+            DefaultVitality = null;
+            DefaultEnergy = null;
         }
     }
 
@@ -51,24 +45,16 @@ namespace CardEditor.Models
         public int? Energy { get; set; }
         public string? Image { get; set; }
 
-        public Card(
-            string? name = null,
-            CardType? cardType = null,
-            int? level = null,
-            int? strength = null,
-            int? dexterity = null,
-            int? vitality = null,
-            int? energy = null,
-            string? image = null)
+        public Card()
         {
-            Name = name;
-            Type = cardType;
-            Level = level;
-            Strength = strength;
-            Dexterity = dexterity;
-            Vitality = vitality;
-            Energy = energy;
-            Image = image;
+            Name = null;
+            Type = null;
+            Level = null;
+            Strength = null;
+            Dexterity = null;
+            Vitality = null;
+            Energy = null;
+            Image = null;
         }
     }
 }

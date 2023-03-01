@@ -1,16 +1,54 @@
-﻿using System;
+﻿using CardEditor.Models;
+using CardEditor.ViewModels;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace CardEditor.Commands
 {
     public class ImportCardCommand : CommandBase
     {
+        public EditViewModel EditViewModel { get; set; }
+        public ImportCardCommand(EditViewModel editViewModel)
+        {
+            EditViewModel = editViewModel;
+        }
+
         public override void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            var Dialog = new OpenFileDialog
+            {
+                Filter = "JSON (*.json)|*.json",
+                Title = "Select a Card to Import"
+            };
+
+            Dialog.ShowDialog();
+            var path = Dialog.FileName;
+            if(path != "")
+            {
+                var json = File.ReadAllText(Dialog.FileName);
+                Card? Card = JsonSerializer.Deserialize<Card>(json);
+
+                if(Card != null)
+                {
+                    EditViewModel.ResetCard();
+                    EditViewModel.CurrentCard.Name = Card.Name;
+                    EditViewModel.CurrentCard.Image = Card.Image;
+                    EditViewModel.CurrentCard.Type = Card.Type;
+                    EditViewModel.SelectedCardTypeName = Card.Type.Name;
+                    EditViewModel.CurrentCard.Level = Card.Level;
+                    EditViewModel.CurrentCard.Strength = Card.Strength;
+                    EditViewModel.CurrentCard.Dexterity = Card.Dexterity;
+                    EditViewModel.CurrentCard.Vitality = Card.Vitality;
+                    EditViewModel.CurrentCard.Energy = Card.Energy;
+                    EditViewModel.ResetCardStats();
+                }
+            }
         }
     }
 }

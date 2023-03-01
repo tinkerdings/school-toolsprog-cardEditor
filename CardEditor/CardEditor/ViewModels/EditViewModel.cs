@@ -97,6 +97,11 @@ namespace CardEditor.ViewModels
             OnPropertyChanged(nameof(CurrentCard));
         }
 
+        public void ResetCardStats()
+        {
+            ResetStatsCommand.Execute(null);
+        }
+
         public void UpdateCard()
         {
             OnPropertyChanged(nameof(CurrentCard));
@@ -110,8 +115,8 @@ namespace CardEditor.ViewModels
             UploadImageCommand = new UploadImageCommand(CurrentCard);
             OpenTypeModalCommand = new OpenTypeModalCommand(this);
             RandomizeStatsCommand = new RandomizeStatsCommand(CurrentCard);
-            ExportCardCommand = new ExportCardCommand();
-            ImportCardCommand = new ImportCardCommand();
+            ExportCardCommand = new ExportCardCommand(this);
+            ImportCardCommand = new ImportCardCommand(this);
             ResetStatsCommand = new ResetStatsCommand(this);
             ShowCardCommand = new ShowCardCommand();
             SaveCardCommand = new SaveCardCommand(this);
