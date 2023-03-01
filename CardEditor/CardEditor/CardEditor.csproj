@@ -20,6 +20,7 @@
     <Resource Include="Img\bark.jpg" />
     <Resource Include="Img\barkDark.jpg" />
     <Resource Include="Img\gold.jpg" />
+    <Resource Include="Img\cave.jpg"/>
   </ItemGroup>
 
 </Project>

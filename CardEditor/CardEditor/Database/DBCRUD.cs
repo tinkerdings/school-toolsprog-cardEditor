@@ -25,6 +25,7 @@ namespace CardEditor.Database
             {
                 _cards = new ObservableCollection<Card>();
                 var allCards = LoadRecords<Card>();
+                Debug.WriteLine(allCards.Count);
                 for(int i = allCards.Count-1; i >= 0; i--)
                 {
                     _cards.Add(allCards[i]);
@@ -109,22 +110,16 @@ namespace CardEditor.Database
             var collection = GetCollection<Card>();
             if(Exists<Card>(card.Name))
             {
-                Debug.WriteLine("Card already exists, overwriting");
                 Card c = GetCard(card.Name);
                 var id = c.Id;
                 DeleteCard(card.Name);
-                InsertRecord<Card>(card);
             }
-            else
-            {
-                Debug.WriteLine("Card did not already exist.");
-                InsertRecord<Card>(card);
-            }
+            InsertRecord<Card>(card);
         }
         public void InsertRecord<T>(T record)
         {
             var collection = GetCollection<T>();
-            collection.InsertOneAsync(record);
+            collection.InsertOne(record);
         }
         public void DeleteCardType(string name)
         {

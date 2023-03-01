@@ -18,11 +18,14 @@ namespace CardEditor.Commands
         public override void Execute(object parameter)
         {
             CardType currentType = EditViewModel.Database.GetCardType(EditViewModel.SelectedCardTypeName);
-            EditViewModel.CurrentCard.Level = currentType.DefaultLevel;
-            EditViewModel.CurrentCard.Strength = currentType.DefaultStrength;
-            EditViewModel.CurrentCard.Dexterity = currentType.DefaultDexterity;
-            EditViewModel.CurrentCard.Vitality = currentType.DefaultVitality;
-            EditViewModel.CurrentCard.Energy = currentType.DefaultEnergy;
+            if(currentType != null)
+            {
+                EditViewModel.CurrentCard.Level = currentType.DefaultLevel;
+                EditViewModel.CurrentCard.Strength = currentType.DefaultStrength;
+                EditViewModel.CurrentCard.Dexterity = currentType.DefaultDexterity;
+                EditViewModel.CurrentCard.Vitality = currentType.DefaultVitality;
+                EditViewModel.CurrentCard.Energy = currentType.DefaultEnergy;
+            }
         }
     }
 }

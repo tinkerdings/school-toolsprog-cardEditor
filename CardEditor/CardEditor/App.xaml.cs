@@ -18,10 +18,13 @@ namespace CardEditor
         public MainWindow MainWindow { get; set; }
         public ViewModelLocator ViewModelLocator { get; set; }
 
+        public DBCRUD Database { get; set; }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
+            Database = new DBCRUD("DiabloCardEditor");
             ViewModelLocator = new ViewModelLocator();
             ViewModelLocator.InitViewModels();
             MainWindow = new MainWindow();

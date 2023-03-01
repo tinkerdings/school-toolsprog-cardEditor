@@ -45,6 +45,14 @@ namespace CardEditor.ViewModels
                 _SelectedCardTypeName = value;
                 SelectedCardType = Database.GetCardType(value);
                 CurrentCard.Type = SelectedCardType;
+                if(SelectedCardType != null)
+                {
+                    CurrentCard.Level = SelectedCardType.DefaultLevel;
+                    CurrentCard.Strength = SelectedCardType.DefaultStrength;
+                    CurrentCard.Dexterity = SelectedCardType.DefaultDexterity;
+                    CurrentCard.Vitality = SelectedCardType.DefaultVitality;
+                    CurrentCard.Energy = SelectedCardType.DefaultEnergy;
+                }
                 OnPropertyChanged(nameof(SelectedCardTypeName));
             }
         }

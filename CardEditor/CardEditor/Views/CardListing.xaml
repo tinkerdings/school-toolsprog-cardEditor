@@ -64,11 +64,11 @@
                     Style="{StaticResource StyleBorderCardImage}">
                     <Image 
                         Style="{StaticResource StyleImageCard}"
-                        MaxHeight="100"
-                        MaxWidth="100"
-                        MinHeight="100"
-                        MinWidth="100"
-                        Source="{Binding Image}"/>
+                        MaxHeight="130"
+                        MaxWidth="130"
+                        MinHeight="130"
+                        MinWidth="130"
+                        Source="{Binding Image, TargetNullValue={x:Null}}"/>
                 </Border>
                 <Grid Grid.Column="1">
 
@@ -132,7 +132,7 @@
                         Grid.Column="1"
                         Style="{StaticResource StyleTextBlockGold}"
                         FontSize="18"
-                        Text="{Binding Strength}"/>
+                        Text="{Binding Dexterity}"/>
                     <TextBlock
                         Padding="15 5"
                         Grid.Row="3"
@@ -148,7 +148,7 @@
                         Grid.Column="1"
                         Style="{StaticResource StyleTextBlockGold}"
                         FontSize="18"
-                        Text="{Binding Strength}"/>
+                        Text="{Binding Vitality}"/>
                     <TextBlock
                         Padding="15 5"
                         Grid.Row="4"
@@ -164,7 +164,7 @@
                         Grid.Column="1"
                         Style="{StaticResource StyleTextBlockGold}"
                         FontSize="18"
-                        Text="{Binding Strength}"/>
+                        Text="{Binding Energy}"/>
                 </Grid>
             </Grid>
         </Grid>

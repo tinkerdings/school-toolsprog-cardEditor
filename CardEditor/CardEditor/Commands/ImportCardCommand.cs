@@ -34,13 +34,15 @@ namespace CardEditor.Commands
                 var json = File.ReadAllText(Dialog.FileName);
                 Card? Card = JsonSerializer.Deserialize<Card>(json);
 
-                if(Card != null)
+                if(Card != null && Card.Type != null)
                 {
                     EditViewModel.ResetCard();
                     EditViewModel.CurrentCard.Name = Card.Name;
                     EditViewModel.CurrentCard.Image = Card.Image;
-                    EditViewModel.CurrentCard.Type = Card.Type;
+                    EditViewModel.Database.UpsertCardType(Card.Type.Name, Card.Type);
+                    EditViewModel.UpdateCardTypeList();
                     EditViewModel.SelectedCardTypeName = Card.Type.Name;
+                    EditViewModel.CurrentCard.Type = Card.Type;
                     EditViewModel.CurrentCard.Level = Card.Level;
                     EditViewModel.CurrentCard.Strength = Card.Strength;
                     EditViewModel.CurrentCard.Dexterity = Card.Dexterity;

@@ -9,7 +9,7 @@
         ResizeMode="NoResize"
         WindowStyle="None"
         WindowStartupLocation="CenterOwner"
-        MinHeight="760" 
+        MinHeight="762" 
         MinWidth="500"
         MaxHeight="760" 
         MaxWidth="500"

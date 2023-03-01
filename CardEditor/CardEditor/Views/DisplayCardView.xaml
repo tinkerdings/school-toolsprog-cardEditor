@@ -42,7 +42,7 @@
             </Border>
             <Border
                 Grid.Row="1"
-                Style="{StaticResource StyleBorderView}">
+                Style="{StaticResource StyleBorderCave}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -66,7 +66,7 @@
                             MinWidth="280"
                             MinHeight="280"
                             Style="{StaticResource StyleImageCard}"
-                            Source="{Binding CurrentCard.Image}"/>
+                            Source="{Binding CurrentCard.Image, TargetNullValue={x:Null}}"/>
                     </Border>
                     <Border
                         Grid.Row="1"
@@ -121,13 +121,13 @@
                                 Grid.Column="0"
                                 Style="{StaticResource StyleTextStatItem}"
                                 Foreground="#FAB616"
-                                FontSize="18"
+                                FontSize="20"
                                 Margin="20 0 0 0"
                                 Text="LEVEL:"/>
                             <TextBlock
                                 Grid.Column="1"
                                 Style="{StaticResource StyleTextBlockGold}"
-                                FontSize="18"
+                                FontSize="20"
                                 Margin="0 0 20 0"
                                 HorizontalAlignment="Right"
                                 Text="{Binding CurrentCard.Level}"/>
@@ -146,14 +146,14 @@
                                 VerticalAlignment="Center"
                                 Grid.Column="0"
                                 Style="{StaticResource StyleTextStatItem}"
-                                FontSize="18"
+                                FontSize="20"
                                 Margin="20 0 0 0"
                                 Foreground="#D87DFF"
                                 Text="STRENGTH:"/>
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Grid.Column="1"
-                                FontSize="18"
+                                FontSize="20"
                                 Margin="0 0 20 0"
                                 Style="{StaticResource StyleTextBlockGold}"
                                 HorizontalAlignment="Right"
@@ -173,14 +173,14 @@
                                 VerticalAlignment="Center"
                                 Grid.Column="0"
                                 Style="{StaticResource StyleTextStatItem}"
-                                FontSize="18"
+                                FontSize="20"
                                 Margin="20 0 0 0"
                                 Foreground="#96F505"
                                 Text="DEXTERITY:"/>
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Grid.Column="1"
-                                FontSize="18"
+                                FontSize="20"
                                 Margin="0 0 20 0"
                                 Style="{StaticResource StyleTextBlockGold}"
                                 HorizontalAlignment="Right"
@@ -200,14 +200,14 @@
                                 VerticalAlignment="Center"
                                 Grid.Column="0"
                                 Margin="20 0 0 0"
-                                FontSize="18"
+                                FontSize="20"
                                 Style="{StaticResource StyleTextStatItem}"
                                 Foreground="#F33464"
                                 Text="VITALITY:"/>
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Grid.Column="1"
-                                FontSize="18"
+                                FontSize="20"
                                 Margin="0 0 20 0"
                                 Style="{StaticResource StyleTextBlockGold}"
                                 HorizontalAlignment="Right"
@@ -227,7 +227,7 @@
                                 VerticalAlignment="Center"
                                 Grid.Column="0"
                                 Margin="20 0 0 0"
-                                FontSize="18"
+                                FontSize="20"
                                 Style="{StaticResource StyleTextStatItem}"
                                 Foreground="#7D8DFF"
                                 Text="ENERGY:"/>
@@ -235,7 +235,7 @@
                                 VerticalAlignment="Center"
                                 Grid.Column="1"
                                 Style="{StaticResource StyleTextBlockGold}"
-                                FontSize="18"
+                                FontSize="20"
                                 Margin="0 0 20 0"
                                 HorizontalAlignment="Right"
                                 Text="{Binding CurrentCard.Energy}"/>

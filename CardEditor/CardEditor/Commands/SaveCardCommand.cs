@@ -1,6 +1,7 @@
 ﻿using CardEditor.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,10 @@ namespace CardEditor.Commands
             EditViewModel.Database.UpsertCard(EditViewModel.CurrentCard.CardData);
             var ViewModelLocator = EditViewModel.ViewModelLocator;
             var BrowseViewModel = ViewModelLocator.BrowseViewModel;
+            if(BrowseViewModel == null)
+            {
+                Debug.WriteLine("BrowseViewModel == null");
+            }
             BrowseViewModel.Update();
             EditViewModel.ResetCard();
         }
