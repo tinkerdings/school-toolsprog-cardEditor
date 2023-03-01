@@ -49,3 +49,7 @@ C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\bin\Debug\net5.0-windows
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\CardEditor.csproj.CopyComplete
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\Views\CardListing.g.cs
 C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\Views\CardListing.baml
+C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\DisplayCardModal.g.cs
+C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\Views\DisplayCardView.g.cs
+C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\DisplayCardModal.baml
+C:\dev\skole\toolsProg\cardEditor\CardEditor\CardEditor\obj\Debug\net5.0-windows\Views\DisplayCardView.baml

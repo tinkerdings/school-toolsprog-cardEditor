@@ -1,0 +1,249 @@
+﻿<UserControl x:Class="CardEditor.Views.DisplayCardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CardEditor.Views" xmlns:utils="clr-namespace:CardEditor.Utils"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border
+        Style="{StaticResource StyleBorderWindow}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border 
+                Grid.Row="0"
+                Style="{StaticResource StyleBorderTitlePrimary}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        Margin="55 0 0 0"
+                        Grid.Column="0"
+                        Style="{StaticResource StyleTextTitleSecondary}"
+                        Text="CARD"/>
+                    <Button
+                        Grid.Column="1"
+                        Style="{StaticResource StyleButtonPrimary}"
+                        FontSize="20"
+                        MinWidth="50"
+                        MinHeight="50"
+                        FontWeight="Black"
+                        Content="X"
+                        Command="{Binding CloseDisplayCardModalCommand}"/>
+                </Grid>
+            </Border>
+            <Border
+                Grid.Row="1"
+                Style="{StaticResource StyleBorderView}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Border
+                        Grid.Row="0"
+                        Margin="0 30 0 0"
+                        Style="{StaticResource StyleBorderCardImage}">
+                        <Image
+                            MaxWidth="280"
+                            MaxHeight="280"
+                            MinWidth="280"
+                            MinHeight="280"
+                            Style="{StaticResource StyleImageCard}"
+                            Source="{Binding CurrentCard.Image}"/>
+                    </Border>
+                    <Border
+                        Grid.Row="1"
+                        Margin="0 10 0 0"
+                        Style="{StaticResource StyleBorderTitlePrimary}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="NAME"
+                                FontSize="24"
+                                Style="{StaticResource StyleTextTitlePrimary}"/>
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="{Binding CurrentCard.Name}"
+                                FontSize="24"
+                                Style="{StaticResource StyleTextTitleSecondary}"/>
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="TYPE"
+                                FontSize="24"
+                                Style="{StaticResource StyleTextTitlePrimary}"/>
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding CurrentCard.Type.Name}"
+                                FontSize="24"
+                                Style="{StaticResource StyleTextTitleSecondary}"/>
+                        </Grid>
+                    </Border>
+                    <Border 
+                        Grid.Row="2"
+                        Style="{StaticResource StyleBorderItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                Grid.Column="0"
+                                Style="{StaticResource StyleTextStatItem}"
+                                Foreground="#FAB616"
+                                FontSize="18"
+                                Margin="20 0 0 0"
+                                Text="LEVEL:"/>
+                            <TextBlock
+                                Grid.Column="1"
+                                Style="{StaticResource StyleTextBlockGold}"
+                                FontSize="18"
+                                Margin="0 0 20 0"
+                                HorizontalAlignment="Right"
+                                Text="{Binding CurrentCard.Level}"/>
+                        </Grid>
+                    </Border>
+                    <Border 
+                        Grid.Row="3"
+                        Style="{StaticResource StyleBorderItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Grid.Column="0"
+                                Style="{StaticResource StyleTextStatItem}"
+                                FontSize="18"
+                                Margin="20 0 0 0"
+                                Foreground="#D87DFF"
+                                Text="STRENGTH:"/>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Grid.Column="1"
+                                FontSize="18"
+                                Margin="0 0 20 0"
+                                Style="{StaticResource StyleTextBlockGold}"
+                                HorizontalAlignment="Right"
+                                Text="{Binding CurrentCard.Strength}"/>
+                        </Grid>
+                    </Border>
+                    <Border 
+                        Grid.Row="4"
+                        Style="{StaticResource StyleBorderItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Grid.Column="0"
+                                Style="{StaticResource StyleTextStatItem}"
+                                FontSize="18"
+                                Margin="20 0 0 0"
+                                Foreground="#96F505"
+                                Text="DEXTERITY:"/>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Grid.Column="1"
+                                FontSize="18"
+                                Margin="0 0 20 0"
+                                Style="{StaticResource StyleTextBlockGold}"
+                                HorizontalAlignment="Right"
+                                Text="{Binding CurrentCard.Dexterity}"/>
+                        </Grid>
+                    </Border>
+                    <Border 
+                        Grid.Row="5"
+                        Style="{StaticResource StyleBorderItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Grid.Column="0"
+                                Margin="20 0 0 0"
+                                FontSize="18"
+                                Style="{StaticResource StyleTextStatItem}"
+                                Foreground="#F33464"
+                                Text="VITALITY:"/>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Grid.Column="1"
+                                FontSize="18"
+                                Margin="0 0 20 0"
+                                Style="{StaticResource StyleTextBlockGold}"
+                                HorizontalAlignment="Right"
+                                Text="{Binding CurrentCard.Vitality}"/>
+                        </Grid>
+                    </Border>
+                    <Border 
+                        Grid.Row="6"
+                        Style="{StaticResource StyleBorderItem}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Grid.Column="0"
+                                Margin="20 0 0 0"
+                                FontSize="18"
+                                Style="{StaticResource StyleTextStatItem}"
+                                Foreground="#7D8DFF"
+                                Text="ENERGY:"/>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Grid.Column="1"
+                                Style="{StaticResource StyleTextBlockGold}"
+                                FontSize="18"
+                                Margin="0 0 20 0"
+                                HorizontalAlignment="Right"
+                                Text="{Binding CurrentCard.Energy}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+
+</UserControl>

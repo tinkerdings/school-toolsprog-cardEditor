@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="DisplayCardModal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="TypeModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -14,6 +17,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\CardListing.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\DisplayCardView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\EditView.xaml.cs">
@@ -27,6 +33,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="DisplayCardModal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -37,6 +46,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\CardListing.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\DisplayCardView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\EditView.xaml">

@@ -7,20 +7,16 @@ using System.Threading.Tasks;
 
 namespace CardEditor.Commands
 {
-    public class ShowCardCommand : CommandBase
+    public class CloseDisplayCardModalCommand : CommandBase
     {
-        public DisplayCardModal DisplayCardModal { get; set; }
         public EditViewModel EditViewModel { get; set; }
-        public ShowCardCommand(EditViewModel editViewModel)
+        public CloseDisplayCardModalCommand(EditViewModel editViewModel) 
         {
             EditViewModel = editViewModel;
         }
-
         public override void Execute(object parameter)
         {
-            DisplayCardModal = new DisplayCardModal(EditViewModel);
-            DisplayCardModal.Owner = App.Current.MainWindow;
-            DisplayCardModal.ShowDialog();
+            EditViewModel.DisplayCardModal.Close();
         }
     }
 }

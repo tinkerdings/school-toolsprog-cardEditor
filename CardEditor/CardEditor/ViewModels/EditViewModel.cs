@@ -29,9 +29,11 @@ namespace CardEditor.ViewModels
         public ICommand ImportCardCommand { get; }
         public ICommand ResetStatsCommand { get; }
         public ICommand ShowCardCommand { get; }
+        public ICommand CloseDisplayCardModalCommand { get; }
         public ICommand DeleteCardCommand { get; }
         public ICommand RandomizeCardNameCommand { get; }
         public ICommand SaveCardCommand { get; }
+        public DisplayCardModal DisplayCardModal { get; set; }
 
         private string? _SelectedCardTypeName { get; set; }
         private CardType? SelectedCardType { get; set; }
@@ -118,7 +120,9 @@ namespace CardEditor.ViewModels
             ExportCardCommand = new ExportCardCommand(this);
             ImportCardCommand = new ImportCardCommand(this);
             ResetStatsCommand = new ResetStatsCommand(this);
-            ShowCardCommand = new ShowCardCommand();
+            ShowCardCommand = new ShowCardCommand(this);
+            CloseDisplayCardModalCommand = new CloseDisplayCardModalCommand(this);
+            DisplayCardModal = null;
             SaveCardCommand = new SaveCardCommand(this);
             DeleteCardCommand = new DeleteCardCommand(this);
             RandomizeCardNameCommand = new RandomizeCardNameCommand(CurrentCard);
